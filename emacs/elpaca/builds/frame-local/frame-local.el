@@ -1,0 +1,1 @@
+/home/lucca/.config/emacs/elpaca/repos/frame-local/frame-local.el

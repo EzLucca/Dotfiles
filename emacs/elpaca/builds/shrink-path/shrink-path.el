@@ -1,0 +1,1 @@
+/home/lucca/.config/emacs/elpaca/repos/shrink-path/shrink-path.el

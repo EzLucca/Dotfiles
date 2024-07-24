@@ -1,0 +1,1 @@
+("~/.config/emacs/elpaca/repos/doom-modeline/" "~/.config/emacs/elpaca/repos/emacs-dashboard/")
