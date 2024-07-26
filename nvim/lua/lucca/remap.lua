@@ -1,6 +1,6 @@
 
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>fe", vim.cmd.Ex)
 
 vim.keymap.set("n", "<leader>fs", vim.cmd.w)
 vim.keymap.set("n", "<leader>fq", vim.cmd.q)
@@ -39,7 +39,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 -- This is going to get me cancelled
-vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("i", "jk", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)

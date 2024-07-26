@@ -28,6 +28,7 @@ return require('packer').startup(function(use)
 		use("theprimeagen/harpoon")
 		use("mbbill/undotree")
 		use("tpope/vim-fugitive")
+        use('iamcco/markdown-preview.nvim')
 		use {
 			'VonHeikemen/lsp-zero.nvim',
 			branch = 'v3.x',
