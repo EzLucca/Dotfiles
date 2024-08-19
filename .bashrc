@@ -113,3 +113,4 @@ shopt -s expand_aliases
 shopt -s histappend
 
 PS1="\[\e[32;40m\]\W\[\e[m\]\[\e[33m\] $ \[\e[m\] "
+export LC_ALL=en_US.UTF-8

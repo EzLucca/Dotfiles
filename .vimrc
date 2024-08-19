@@ -25,13 +25,10 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch                   " incremental searching
 set scrolloff=10
-set signcolumn=yes
-set colorcolumn=80
 set relativenumber
 set laststatus=2
 set title
 set autoindent
-set colorcolumn=80
 set showcmd
 set background=dark
 
@@ -49,45 +46,44 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'vim-utils/vim-man'
 Plug 'leafgarland/typescript-vim'
 Plug 'mbbill/undotree'
-Plug 'preservim/nerdtree'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround' 
-Plug 'garbas/vim-snipmate' 
-Plug 'MarcWeber/vim-addon-mw-utils'  
-Plug 'tomtom/tlib_vim'              
-Plug 'honza/vim-snippets'          
-Plug 'klen/python-mode'           
 Plug 'junegunn/vim-plug'
 
 call plug#end()
 
 colorscheme gruvbox
 
-let mapleader = " "
-
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ'z
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
 
-nnoremap <leader>u :UndotreeShow<CR>
+let mapleader = " "
+
+nnoremap <leader>sf :source ~/.vimrc<CR>
+nnoremap <leader>fs :w<CR>
+nnoremap <leader>fq :q<CR>
+nnoremap <leader>fe :Ex<CR>
+nnoremap <leader>wv :vsplit <CR>
+nnoremap <leader>wl <c-w><c-l>
+nnoremap <leader>wk <c-w><c-k>
+nnoremap <leader>wj <c-w><c-j>
+nnoremap <leader>wh <c-w><c-h>
+nnoremap <leader>wq <c-w><c-q>
+
+noremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>ps :Rg<SPACE>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 
-inoremap jk <Esc>
 
-nnoremap <leader>wv :vs<CR>
-nnoremap <leader>wh :vs<CR>
-nnoremap <leader>wl <Ctrl-w>l
-nnoremap <leader>wh <Ctrl-w>h
-nnoremap <leader>wj <Ctrl-w>j
-nnoremap <leader>wk <Ctrl-w>k
-nnoremap <leader>fs :w<CR>
-nnoremap <leader>fq :q<CR>
-
-nnoremap <leader><leader> :source /HOME/Dotfiles/.vimrc<CR>
-
-
+inoremap jk <ESC>

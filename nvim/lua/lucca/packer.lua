@@ -28,7 +28,10 @@ return require('packer').startup(function(use)
 		use("theprimeagen/harpoon")
 		use("mbbill/undotree")
 		use("tpope/vim-fugitive")
-        use('iamcco/markdown-preview.nvim')
+        use(
+        { "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+})
 		use {
 			'VonHeikemen/lsp-zero.nvim',
 			branch = 'v3.x',
