@@ -1,34 +1,48 @@
 #!/bin/bash
 
-# Prompt the user for the book title and author
-echo "Enter the book title:"
-read book_title
+# Recebe o título do livro e o autor como argumentos de linha de comando
+book_title=$1
+author=$2
 
-echo "Enter the author:"
-read author
+# Verifica se o título do livro foi fornecido
+if [ -z "$book_title" ]; then
+  echo "Erro: O título do livro não pode estar vazio."
+  exit 1
+fi
 
-# Create a filename based on the book title (e.g., "Book_Title.txt")
-filename="${book_title// /_}.md"
+# Sanitiza o título do livro para criar o nome do arquivo (substitui espaços por underscores)
+filename=$(echo "$book_title" | sed 's/ /_/g')
 
-# Define the standard template
-template="# Book Title: $book_title
-# Author: $author
-# Date: $(date +'%Y-%m-%d')
+# Adiciona a data atual ao nome do arquivo
+current_date=$(date +'%Y-%m-%d')
+filename="${current_date}_${filename}"
 
-## Summary
+# Verifica se o nome do arquivo está vazio após a sanitização
+if [ -z "$filename" ]; then
+  echo "Erro: Nome do arquivo gerado está vazio."
+  exit 1
+fi
 
-## Key Points
+# Define o template padrão em Markdown
+template="# $book_title
+**Autor:** $author  
+**Data:** $(date +'%Y-%m-%d')
 
-## Quotes
+## Resumo
 
-## Reflections
+## Pontos Chave
+
+## Citações
+
+## Reflexões
 "
 
-# Write the template to the file
-echo "$template" > "/home/duds/Dropbox/notes/src/$filename"
+# Escreve o template no arquivo com extensão .md
+echo "$template" > "/home/duds/Dropbox/notes/src/${filename}.md"
 
-# Notify the user
-echo "Note template created: $filename"
+# Notifica o usuário
+echo "Arquivo de nota criado: ${filename}.md"
 
-# Opening
-nvim /home/duds/Dropbox/notes/src/$filename
+# Retorna o nome do arquivo para ser usado pelo Neovim
+echo "${filename}.md"
+

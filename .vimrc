@@ -78,6 +78,10 @@ nnoremap <leader>wk <c-w><c-k>
 nnoremap <leader>wj <c-w><c-j>
 nnoremap <leader>wh <c-w><c-h>
 nnoremap <leader>wq <c-w><c-q>
+nnoremap <leader>w<up> <c-W>+
+nnoremap <leader>w<down> <c-W>-
+nnoremap <leader>w<Right> <c-W>>
+nnoremap <leader>w<Left> <c-W><
 
 noremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>

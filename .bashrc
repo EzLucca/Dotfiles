@@ -76,7 +76,7 @@ if ${use_color} ; then
 		PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]\$\[\033[00m\] '
 	fi
 
-#	alias ls='clear && ls -al --color=auto'
+	alias ls='ls --color=auto'
 	alias grep='grep --colour=auto'
 	alias egrep='egrep --colour=auto'
 	alias fgrep='fgrep --colour=auto'
@@ -112,5 +112,3 @@ shopt -s expand_aliases
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
 
-PS1="\[\e[32;40m\]\W\[\e[m\]\[\e[33m\] $ \[\e[m\] "
-export LC_ALL=en_US.UTF-8
