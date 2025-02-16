@@ -57,10 +57,6 @@ colorscheme gruvbox
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ'z
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
 
 if executable('rg')
     let g:rg_derive_root='true'
