@@ -42,7 +42,6 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 call plug#begin('~/.vim/plugger')
 
 Plug 'gruvbox-community/gruvbox'
-"Plug 'jremmen/vim-ripgrep'
 Plug 'vim-utils/vim-man'
 Plug 'leafgarland/typescript-vim'
 Plug 'mbbill/undotree'
@@ -53,14 +52,6 @@ Plug 'junegunn/vim-plug'
 call plug#end()
 
 colorscheme gruvbox
-
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap J mzJ'z
-
-if executable('rg')
-    let g:rg_derive_root='true'
-endif
 
 let mapleader = " "
 
