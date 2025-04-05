@@ -1,1 +1,0 @@
-/home/lucca/.config/emacs/elpaca/repos/annalist/annalist.el

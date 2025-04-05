@@ -1,1 +1,0 @@
-/home/lucca/.config/emacs/elpaca/repos/dired-hacks/dired-open.el
