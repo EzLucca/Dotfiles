@@ -15,18 +15,17 @@ vim.opt.scrolloff = 8
 
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>fe", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>fe", vim.cmd.Ex, { desc = 'Open explorer' })
+vim.keymap.set("n", "<leader>fs", vim.cmd.w, { desc = 'Save file' })
+vim.keymap.set("n", "<leader>fq", vim.cmd.q, { desc = 'Quit file' })
 
-vim.keymap.set("n", "<leader>fs", vim.cmd.w)
-vim.keymap.set("n", "<leader>fq", vim.cmd.q)
-
-vim.keymap.set("n", "<leader>wv", "<C-w><C-v>")
-vim.keymap.set("n", "<leader>ws", "<C-w><C-s>")
-vim.keymap.set("n", "<leader>wq", "<C-w><C-q>")
-vim.keymap.set("n", "<leader>wl", "<C-w><C-l>")
-vim.keymap.set("n", "<leader>wh", "<C-w><C-h>")
-vim.keymap.set("n", "<leader>wj", "<C-w><C-j>")
-vim.keymap.set("n", "<leader>wk", "<C-w><C-k>")
+vim.keymap.set("n", "<leader>wv", "<C-w><C-v>", { desc = 'Vertical split' })
+vim.keymap.set("n", "<leader>ws", "<C-w><C-s>", { desc = 'Horizontal split' })
+vim.keymap.set("n", "<leader>wq", "<C-w><C-q>", { desc = 'Close window' })
+vim.keymap.set("n", "<leader>wl", "<C-w><C-l>", { desc = 'Move left window' })
+vim.keymap.set("n", "<leader>wh", "<C-w><C-h>", { desc = 'Move right window' })
+vim.keymap.set("n", "<leader>wj", "<C-w><C-j>", { desc = 'Move down window' })
+vim.keymap.set("n", "<leader>wk", "<C-w><C-k>", { desc = 'Move up window' })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -34,22 +33,13 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
-
-vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
-end)
-vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
-end)
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = 'Copy selected to clipboard' })
+vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = 'Copy line to clipboard' })
 
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
@@ -64,14 +54,11 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Substitute word' })
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { desc = 'Make file executable' })
 
 -- markdown preview
-vim.keymap.set("n", "<leader>mp", ":MarkdownPreviewToggle<CR>")
-
--- yank to clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>mp", ":MarkdownPreviewToggle<CR>", { desc = 'Markdown Preview' })
 
 -- Map <Leader>n to run the create_note.sh script
 --vim.api.nvim_set_keymap('n', '<Leader>nt', ':terminal sh ~/github_EzLucca/Dotfiles/scripts/template.sh<CR>', { noremap = true, silent = true })
