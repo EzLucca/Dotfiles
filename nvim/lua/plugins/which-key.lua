@@ -44,13 +44,20 @@
 
       -- Document existing key chains
       spec = {
-        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
-        { '<leader>d', group = '[D]ocument' },
-        { '<leader>r', group = '[R]ename' },
-        { '<leader>s', group = '[S]earch' },
-        { '<leader>w', group = '[W]orkspace' },
-        { '<leader>t', group = '[T]oggle' },
+        { '<leader>b', group = 'Buffer' },
+        { '<leader>c', group = 'Code', mode = { 'n', 'x' } },
+        { '<leader>d', group = 'Document' },
+        { '<leader>f', group = 'File' },
+        { '<leader>g', group = 'Go' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>i', group = 'Indent' },
+        { '<leader>m', group = 'Markdown' },
+        { '<leader>n', group = 'Neotree' },
+        { '<leader>r', group = 'Rename' },
+        { '<leader>s', group = 'Search' },
+        { '<leader>t', group = 'Toggle' },
+        { '<leader>q', group = 'Quit' },
+        { '<leader>w', group = 'Workspace' },
       },
     },
   }
