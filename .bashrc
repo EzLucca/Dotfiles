@@ -83,9 +83,9 @@ if ${use_color} ; then
 else
 	if [[ ${EUID} == 0 ]] ; then
 		# show root@ when we don't have colors
-		PS1='\u@\h \W \$ '
+		PS1='\h \W \$ '
 	else
-		PS1='\u@\h \w \$ '
+		PS1='\h \w \$ '
 	fi
 fi
 
@@ -112,4 +112,7 @@ shopt -s expand_aliases
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
 
-alias dots=~/github_EzLucca/Dotfiles/scripts/dotfiles.sh
+alias dots=~/github_EzLucca/Dotfiles/scripts/dotfiles.
+
+# PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
+PS1='\[\e[0;2;38;5;46m\]$ \[\e[0;2;38;5;47m\](\[\e[0;1;38;5;46m\]\W\[\e[0;2;38;5;47m\]) \[\e[0;1;38;5;46m\]> \[\e[0m\]'
