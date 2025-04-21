@@ -57,40 +57,4 @@ vim.keymap.set("n", "<leader>if", "mzgg=G'z", { desc = 'Indent file' })
 vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Substitute word' })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { desc = 'Make file executable' })
 
--- markdown preview
-vim.keymap.set("n", "<leader>mp", ":MarkdownPreviewToggle<CR>", { desc = 'Markdown Preview' })
-
--- Map <Leader>n to run the create_note.sh script
---vim.api.nvim_set_keymap('n', '<Leader>nt', ':terminal sh ~/github_EzLucca/Dotfiles/scripts/template.sh<CR>', { noremap = true, silent = true })
-
--- Prompt for book title and author, then run the script with those arguments
---vim.api.nvim_set_keymap('n', '<Leader>nt', ':lua RunCreateNote()<CR>', { noremap = true, silent = true })
---
---function RunCreateNote()
---    -- Pede ao usuário o título do livro e o autor
---    local book_title = vim.fn.input("Título do Livro: ")
---    local author = vim.fn.input("Autor: ")
---
---    -- Executa o script e captura a saída (nome do arquivo)
---    local handle = io.popen(string.format('sh /home/duds/github_EzLucca/Dotfiles/scripts/template.sh "%s" "%s"', book_title, author))
---    local filename = handle:read("*a")
---    handle:close()
---
---    -- Remove espaços ou novas linhas extras
---    filename = vim.fn.trim(filename)
---
---    -- Debug: Exibe o nome do arquivo
---    print("Nome do arquivo criado: " .. filename)
---
---    -- Verifica se o arquivo foi criado com sucesso e abre-o
---    if vim.fn.filereadable(filename) == 1 then
---        vim.cmd('edit ' .. vim.fn.fnameescape(filename))
---    else
---        print("Erro: Falha ao abrir o arquivo de nota: " .. filename)
---    end
---end
---
---vim.keymap.set("n", "<leader><leader>", function()
---    vim.cmd("so")
---end)
-
+vim.keymap.set("n", "<leader>mp", ":Man ", { desc = 'Man Pages' })
