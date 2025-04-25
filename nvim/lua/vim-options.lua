@@ -54,7 +54,8 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>if", "mzgg=G'z", { desc = 'Indent file' })
 
-vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Substitute word' })
+vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = 'Substitute word' })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { desc = 'Make file executable' })
 
-vim.keymap.set("n", "<leader>mp", ":Man ", { desc = 'Man Pages' })
+vim.keymap.set("n", "<leader>om", ":Man ", { desc = 'Open Manual' })
+vim.keymap.set("n", "<leader>of", ":e *", { desc = 'Open file' })
