@@ -48,17 +48,22 @@ Plug 'mbbill/undotree'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround' 
 Plug 'junegunn/vim-plug'
+Plug 'liuchengxu/vim-which-key'
 
 call plug#end()
 
 colorscheme gruvbox
 
 let mapleader = " "
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+set timeoutlen=500
 
 nnoremap <leader>sf :source ~/.vimrc<CR>
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>fq :q<CR>
 nnoremap <leader>fe :Ex<CR>
+nnoremap <leader>of :E *
+nnoremap <leader>om :Man 
 nnoremap <leader>wv :vsplit <CR>
 nnoremap <leader>wl <c-w><c-l>
 nnoremap <leader>wk <c-w><c-k>
@@ -76,6 +81,5 @@ nnoremap <leader>ps :Rg<SPACE>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 noremap <leader>i mzggVG='z
-
 
 inoremap jk <ESC>
