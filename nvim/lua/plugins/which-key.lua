@@ -57,7 +57,7 @@
         { '<leader>s', group = 'Search' },
         { '<leader>t', group = 'Toggle' },
         { '<leader>o', group = 'Open' },
-        { '<leader>q', group = 'Quit' },
+        -- { '<leader>q', group = 'Quit' },
         { '<leader>w', group = 'Workspace' },
       },
     },

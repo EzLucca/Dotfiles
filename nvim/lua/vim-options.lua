@@ -15,9 +15,9 @@ vim.opt.scrolloff = 8
 
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>fe", vim.cmd.Ex, { desc = 'Open explorer' })
-vim.keymap.set("n", "<leader>qs", vim.cmd.w, { desc = 'Save file' })
-vim.keymap.set("n", "<leader>qq", vim.cmd.q, { desc = 'Quit file' })
+vim.keymap.set("n", "<leader>fe", vim.cmd.Ex, { desc = 'File explorer' })
+vim.keymap.set("n", "<leader>fs", vim.cmd.w, { desc = 'File Save' })
+vim.keymap.set("n", "<leader>fq", vim.cmd.q, { desc = 'File Quit' })
 
 vim.keymap.set("n", "<leader>wv", "<C-w><C-v>", { desc = 'Vertical split' })
 vim.keymap.set("n", "<leader>ws", "<C-w><C-s>", { desc = 'Horizontal split' })
