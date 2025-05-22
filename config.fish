@@ -33,3 +33,6 @@ function fish_prompt
     set_color normal
     echo -n ' > '  # The prompt symbol
 end
+
+alias norm="norminette -R CheckForbiddenSourceHeader"
+alias ccc="cc -Wall -Wextra -Werror"
