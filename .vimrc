@@ -25,7 +25,7 @@ set ttyfast                     " terminal acceleration
 set showmatch                   " shows matching part of bracket pairs (), [], {}
 set clipboard=unnamed           " use system clipboard
 
-let mapleader =  "
+let mapleader =  " "
 
 nnoremap <leader>sf :source ~/.vimrc<CR>
 nnoremap <leader>= mzgg=G`z
