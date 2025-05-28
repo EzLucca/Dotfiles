@@ -37,7 +37,6 @@ nnoremap <leader>= mzgg=G`z
 vnoremap <leader>y "+y
 nnoremap <leader>y "+yy
 
-
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>fq :q<CR>
 nnoremap <leader>fe :Ex<CR>
@@ -54,12 +53,7 @@ set fillchars=vert:│
 highlight VertSplit cterm=NONE ctermfg=black ctermbg=NONE
 highlight Normal guibg=#343541 guifg=#d4d4d4
 
-noremap <leader>u :UndotreeShow<CR>
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>ps :Rg<SPACE>
-nnoremap <silent> <leader>+ :vertical resize +5<CR>
-nnoremap <silent> <leader>- :vertical resize -5<CR>
-
 
 packadd termdebug
 nnoremap <leader>gdb :Termdebug ./a.out<CR>
@@ -76,7 +70,7 @@ highlight Type      guifg=#6A9B58 ctermfg=65
 highlight Special   guifg=#6A9B58 ctermfg=65
 highlight PreProc   guifg=#6A9B58 ctermfg=65
 highlight Comment 	guifg=#5a5a5a ctermfg=242
-highlight LineNr 	guifg=#800a80 ctermfg=130
+highlight LineNr 	guifg=#800a80 ctermfg=242
 highlight Statement guifg=#DFA41A ctermfg=130
 highlight vimvar 	guifg=#DFA41A ctermfg=140
 highlight netrwDir 	guifg=#DFA41A ctermfg=140
