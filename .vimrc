@@ -32,6 +32,21 @@ set tabstop=4
 set shiftwidth=4
 set smartindent
 
+" === C Programming Autocomplete ===
+set complete=.,w,b,u,t,i
+set tags=./tags;,tags;
+autocmd FileType c setlocal path+=/usr/include
+autocmd FileType c setlocal complete+=i
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<C-x>\<C-n>"
+
+" Popup menu background and text
+highlight Pmenu      ctermfg=white ctermbg=darkgray guifg=#eeeeee guibg=#3a3a3a
+
+" Selected item in popup menu
+highlight PmenuSel   ctermfg=black ctermbg=lightgray guifg=#000000 guibg=#aaaaaa
+
+
+inoremap
 set ttyfast                     " terminal acceleration
 set showmatch                   " shows matching part of bracket pairs (), [], {}
 set clipboard=unnamed           " use system clipboard
