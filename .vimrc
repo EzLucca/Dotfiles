@@ -38,12 +38,12 @@ set tags=./tags;,tags;
 autocmd FileType c setlocal path+=/usr/include
 autocmd FileType c setlocal complete+=i
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<C-x>\<C-n>"
-
-" Popup menu background and text
 highlight Pmenu      ctermfg=white ctermbg=darkgray guifg=#eeeeee guibg=#3a3a3a
-
-" Selected item in popup menu
 highlight PmenuSel   ctermfg=black ctermbg=lightgray guifg=#000000 guibg=#aaaaaa
+
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+set signcolumn=auto
 
 
 inoremap
@@ -75,14 +75,21 @@ nnoremap <leader>wj <c-w><c-j>
 nnoremap <leader>wh <c-w><c-h>
 nnoremap <leader>wq <c-w><c-q>
 
-nnoremap <leader>of :E *
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+nnoremap <leader>of :e *
 nnoremap <leader>om :Man 
+nnoremap <leader>ff :find<SPACE>
+
+nnoremap <leader>cw :%s/\<<C-r><C-w>\>//gI<Left><Left><Lefth
 
 set fillchars=vert:│
+set fillchars=eob:\ 
 highlight VertSplit cterm=NONE ctermfg=black ctermbg=NONE
 highlight Normal guibg=#343541 guifg=#d4d4d4
 
-nnoremap <leader>ff :find<SPACE>
 
 packadd termdebug
 nnoremap <leader>gdb :Termdebug ./a.out<CR>
