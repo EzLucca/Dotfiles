@@ -35,9 +35,6 @@ set tags=./tags;,tags;
 autocmd FileType c setlocal path+=/usr/include
 autocmd FileType c setlocal complete+=i
 
-highlight Pmenu      ctermfg=white ctermbg=darkgray guifg=#eeeeee guibg=#3a3a3a
-highlight PmenuSel   ctermfg=black ctermbg=lightgray guifg=#000000 guibg=#aaaaaa
-
 set ttyfast                     " terminal acceleration
 set clipboard=unnamed           " use system clipboard
 set wildmenu                    
@@ -45,6 +42,8 @@ set wildmode=longest:full,full
 set shell=/usr/bin/fish\ -i
 set splitright
 set splitbelow
+set fillchars=vert:│
+set fillchars=eob:\ 
 
 " ===================================================================== Remaps =
 
@@ -53,7 +52,7 @@ let mapleader =  " "
 inoremap jk <ESC>
 
 nnoremap <leader>rr :source ~/.vimrc<CR>
-
+nnoremap <leader>sr :e ~/.vimrc<CR>
 nnoremap <leader>= mzgg=G`z
 
 nnoremap <leader>fs :w<CR>
@@ -80,21 +79,14 @@ nnoremap <leader>cw :%s/\<<C-r><C-w>\>//gI<Left><Left><Lefth
 vnoremap <leader>c :s/^/\/\/ /<CR>
 vnoremap <leader>u :s/^\/\/\s\?//<CR>
 
-set fillchars=vert:│
-set fillchars=eob:\ 
-highlight VertSplit cterm=NONE ctermfg=black ctermbg=NONE
-highlight Normal guibg=#343541 guifg=#d4d4d4
-
 packadd termdebug
 nnoremap <leader>gdb :Termdebug ./a.out<CR>
-
 nnoremap <leader>tv :vert term <CR>
 nnoremap <leader>th :term <CR>
 
-" Escape terminal input mode using Esc key
-tmap <Esc> <C-\><C-n>
+tmap <Esc> <C-\><C-n> " Escape terminal input mode using Esc key
 
-" Muted green color: #6A9B58 or #4C8C43 (you can tweak it)
+" ================================================================ Colorscheme =
 highlight Function  ctermfg=65
 highlight Type      ctermfg=65
 highlight Special   ctermfg=65
@@ -105,8 +97,9 @@ highlight Statement ctermfg=130
 highlight vimvar 	ctermfg=140
 highlight netrwDir 	ctermfg=140
 highlight normal 	ctermfg=250
-
-" Status line: dark bg with muted green fg
+highlight Pmenu      ctermfg=white ctermbg=darkgray guifg=#eeeeee guibg=#3a3a3a
+highlight PmenuSel   ctermfg=black ctermbg=lightgray guifg=#000000 guibg=#aaaaaa
 highlight StatusLine   ctermfg=65 ctermbg=234
-" Status line inactive (for split windows)
 highlight StatusLineNC guifg=#444444 guibg=#121212 ctermfg=240 ctermbg=234
+highlight VertSplit cterm=NONE ctermfg=black ctermbg=NONE
+highlight Normal guibg=#343541 guifg=#d4d4d4
