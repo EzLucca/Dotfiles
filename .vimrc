@@ -1,9 +1,5 @@
-"=====================================================
-"" General settings
-"=====================================================
-
+"============================================================ General settings =
 syntax on
-
 filetype on
 
 set path+=**
@@ -17,43 +13,40 @@ set nobackup                    " no backup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch                   " incremental searching
-
 set scrolloff=10
 set sidescrolloff=10
-
 set relativenumber
 set laststatus=2
 set title
 set showcmd
 set background=dark
+set showmatch                   " shows matching part of bracket pairs (), [], {}
+set autochdir 					" Update the dir everytime change files
 
-"=== Tabs & Indentation ===
+"========================================================== Tabs & Indentation =
+
 set tabstop=4
 set shiftwidth=4
 set smartindent
 
-" === C Programming Autocomplete ===
+" ================================================= C Programming Autocomplete =
 set complete=.,w,b,u,t,i
 set tags=./tags;,tags;
 autocmd FileType c setlocal path+=/usr/include
 autocmd FileType c setlocal complete+=i
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<C-x>\<C-n>"
+
 highlight Pmenu      ctermfg=white ctermbg=darkgray guifg=#eeeeee guibg=#3a3a3a
 highlight PmenuSel   ctermfg=black ctermbg=lightgray guifg=#000000 guibg=#aaaaaa
 
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚠'
-set signcolumn=auto
-
-
-inoremap
 set ttyfast                     " terminal acceleration
-set showmatch                   " shows matching part of bracket pairs (), [], {}
 set clipboard=unnamed           " use system clipboard
 set wildmenu                    
-set shell=/usr/bin/fish
+set wildmode=longest:full,full
+set shell=/usr/bin/fish\ -i
 set splitright
 set splitbelow
+
+" ===================================================================== Remaps =
 
 let mapleader =  " "
 
@@ -75,13 +68,13 @@ nnoremap <leader>wj <c-w><c-j>
 nnoremap <leader>wh <c-w><c-h>
 nnoremap <leader>wq <c-w><c-q>
 
-
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 nnoremap <leader>of :e *
-nnoremap <leader>om :Man 
-nnoremap <leader>ff :find<SPACE>
+nnoremap <leader>om :topleft vert term man 
+
+nnoremap <leader>ff :find *
 
 nnoremap <leader>cw :%s/\<<C-r><C-w>\>//gI<Left><Left><Lefth
 
@@ -89,7 +82,6 @@ set fillchars=vert:│
 set fillchars=eob:\ 
 highlight VertSplit cterm=NONE ctermfg=black ctermbg=NONE
 highlight Normal guibg=#343541 guifg=#d4d4d4
-
 
 packadd termdebug
 nnoremap <leader>gdb :Termdebug ./a.out<CR>
