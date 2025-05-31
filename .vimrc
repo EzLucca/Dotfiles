@@ -77,6 +77,8 @@ nnoremap <leader>om :topleft vert term man
 nnoremap <leader>ff :find *
 
 nnoremap <leader>cw :%s/\<<C-r><C-w>\>//gI<Left><Left><Lefth
+vnoremap <leader>c :s/^/\/\/ /<CR>
+vnoremap <leader>u :s/^\/\/\s\?//<CR>
 
 set fillchars=vert:│
 set fillchars=eob:\ 
