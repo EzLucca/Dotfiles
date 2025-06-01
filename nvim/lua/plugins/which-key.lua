@@ -52,7 +52,7 @@
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>i', group = 'Indent' },
         -- { '<leader>m', group = 'Man' },
-        { '<leader>n', group = 'Neotree' },
+        -- { '<leader>n', group = 'Neotree' },
         { '<leader>r', group = 'Rename' },
         { '<leader>s', group = 'Search' },
         { '<leader>t', group = 'Toggle' },

@@ -12,14 +12,16 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.fillchars = {
-  vert = ' ',      -- No character for vertical splits
-  horiz = ' ',     -- No character for horizontal splits
-  vertleft = ' ',  -- No character for left vertical corners
-  vertright = ' ', -- No character for right vertical corners
-  horizup = ' ',   -- No character for upper horizontal corners
-  horizdown = ' '  -- No character for bottom horizontal corners
+	vert = ' ',      -- No character for vertical splits
+	horiz = ' ',     -- No character for horizontal splits
+	vertleft = ' ',  -- No character for left vertical corners
+	vertright = ' ', -- No character for right vertical corners
+	horizup = ' ',   -- No character for upper horizontal corners
+	horizdown = ' ',  -- No character for bottom horizontal corners
+	eob = ' '
 }
 
+vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 
 vim.g.mapleader = " "
@@ -68,28 +70,29 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { de
 
 vim.keymap.set("n", "<leader>om", ":Man ", { desc = 'Open Manual' })
 vim.keymap.set("n", "<leader>of", ":e *", { desc = 'Open file' })
-vim.keymap.set("n", "<leader>ff", ":find ", { desc = 'File find' })
+vim.keymap.set("n", "<leader>ff", ":find *", { desc = 'File find' })
 vim.keymap.set("n", "<leader>jd", ":tag <C-r><C-w> <CR>" , { desc = 'Jump definition' })
 
 -- open shell inside nvim
 vim.o.shell = "/usr/bin/fish"
-vim.keymap.set("n", "<leader>tv", ":vert term <CR>", { desc = 'Open terminal' })
+vim.keymap.set("n", "<leader>tv", ":vert term <CR>", { desc = 'Open v term' })
+vim.keymap.set("n", "<leader>th", ":term <CR>", { desc = 'Open h term' })
 
 vim.api.nvim_create_autocmd("TermOpen", {
-  pattern = "*",
-  callback = function()
-    local opts = { buffer = 0, noremap = true }
+	pattern = "*",
+	callback = function()
+		local opts = { buffer = 0, noremap = true }
 
-    -- Exit terminal mode
-    vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
+		-- Exit terminal mode
+		vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
 
-    -- Close terminal with <leader>q
-    vim.keymap.set("t", "<leader>q", [[<C-\><C-n>:bd!<CR>]], opts)
+		-- Close terminal with <leader>q
+		vim.keymap.set("t", "<leader>q", [[<C-\><C-n>:bd!<CR>]], opts)
 
-    -- Navigate windows from terminal
-    vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], opts)
-    vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], opts)
-    vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]], opts)
-    vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]], opts)
-  end,
+		-- Navigate windows from terminal
+		vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], opts)
+		vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], opts)
+		vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]], opts)
+		vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]], opts)
+	end,
 })
