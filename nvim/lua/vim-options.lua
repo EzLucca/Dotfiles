@@ -4,8 +4,10 @@ vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set splitright")
 vim.cmd("set splitbelow")
+vim.cmd('packadd termdebug')
 
 vim.o.autochdir = true
+vim.o.mouse = "a"
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -31,6 +33,7 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>fe", vim.cmd.Ex, { desc = 'File explorer' })
 vim.keymap.set("n", "<leader>fs", vim.cmd.w, { desc = 'File Save' })
 vim.keymap.set("n", "<leader>fq", vim.cmd.q, { desc = 'File Quit' })
+vim.keymap.set("n", "<leader>qa", vim.cmd.qa, { desc = 'Quit All' })
 
 vim.keymap.set("n", "<leader>wv", "<C-w><C-v>", { desc = 'Vertical split' })
 vim.keymap.set("n", "<leader>ws", "<C-w><C-s>", { desc = 'Horizontal split' })
