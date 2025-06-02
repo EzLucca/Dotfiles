@@ -12,7 +12,7 @@ local colors = {
 	blue     = "#7aa2f7",  -- Bright sky blue
 	purple   = "#875faf",  -- MediumPurple3
 	orange   = "#af5f00",  -- DarkOrange3
-	misty	 = "#d7afaf",  -- MistyRose
+	salmon	 = "#af8787",  -- RoseSalmon
 	comment  = "#626262",  -- Grey35
 	line	 = "#5f875f",  -- Blue-ish purple
 	black    = "#000000",  -- Text color for status line
@@ -31,16 +31,16 @@ function M.colorscheme()
 
 	-- Example highlights
 	highlight("Normal", { fg = colors.fg, bg = colors.bg })
-	highlight("@Variable", { fg = colors.misty, bg = colors.bg })
+	highlight("@Variable", { fg = colors.salmon, bg = colors.bg })
 	highlight("@Constant", { fg = colors.blue, bg = colors.bg })
 	highlight("Comment", { fg = colors.comment, italic = true })
 	highlight("Error", { fg = colors.red, bold = true })
 	highlight("Function", { fg = colors.purple})
 	highlight("Type", { fg = colors.green})
 	highlight("special", { fg = colors.green})
-	highlight("Identifier", { fg = colors.green})
+	highlight("Identifier", { fg = colors.salmon})
 	highlight("Keyword", { fg = colors.orange, bold = true })
-	highlight("String", { fg = colors.green })
+	highlight("String", { fg = colors.green})
 	highlight("Number", { fg = colors.yellow })
 	highlight("Directory", { fg = colors.purple})
 	highlight("Statement", { fg = colors.purple})

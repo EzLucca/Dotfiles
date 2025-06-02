@@ -5,6 +5,8 @@ vim.cmd("set shiftwidth=4")
 vim.cmd("set splitright")
 vim.cmd("set splitbelow")
 
+vim.o.autochdir = true
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.smartindent = true
@@ -71,12 +73,11 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { de
 vim.keymap.set("n", "<leader>om", ":Man ", { desc = 'Open Manual' })
 vim.keymap.set("n", "<leader>of", ":e *", { desc = 'Open file' })
 vim.keymap.set("n", "<leader>ff", ":find *", { desc = 'File find' })
-vim.keymap.set("n", "<leader>jd", ":tag <C-r><C-w> <CR>" , { desc = 'Jump definition' })
 
 -- open shell inside nvim
 vim.o.shell = "/usr/bin/fish"
-vim.keymap.set("n", "<leader>tv", ":vert term <CR>", { desc = 'Open v term' })
-vim.keymap.set("n", "<leader>th", ":term <CR>", { desc = 'Open h term' })
+vim.keymap.set("n", "<leader>tv", ":vert term <CR>", { desc = 'Open vertical term' })
+vim.keymap.set("n", "<leader>th", ":sp | term <CR>", { desc = 'Open horizontal term' })
 
 vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "*",
