@@ -1,13 +1,17 @@
 
-vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
-vim.cmd("set shiftwidth=4")
 vim.cmd("set splitright")
 vim.cmd("set splitbelow")
 vim.cmd('packadd termdebug')
 
 vim.o.autochdir = true
 vim.o.mouse = "a"
+
+vim.opt.smartindent = true
+vim.opt.autoindent = true
+vim.opt.cindent = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -76,6 +80,16 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { de
 vim.keymap.set("n", "<leader>om", ":Man ", { desc = 'Open Manual' })
 vim.keymap.set("n", "<leader>of", ":e *", { desc = 'Open file' })
 vim.keymap.set("n", "<leader>ff", ":find *", { desc = 'File find' })
+vim.keymap.set("n", "<leader>og", function()
+  local word = vim.fn.expand("<cword>")
+  vim.cmd("silent! grep! " .. vim.fn.shellescape(word) .. " *")
+  vim.cmd("copen")
+end, { desc = "Grep current word and open quickfix" })
+vim.keymap.set("n", "<leader>qg", function()
+  vim.fn.setqflist({})
+  vim.cmd("cclose")
+end, { desc = "Clear and close quickfix" })
+
 
 -- open shell inside nvim
 vim.o.shell = "/usr/bin/fish"
