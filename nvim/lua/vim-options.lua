@@ -18,6 +18,7 @@ vim.opt.relativenumber = true
 vim.opt.smartindent = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+vim.opt.swapfile = false
 
 vim.opt.fillchars = {
 	vert = ' ',      -- No character for vertical splits
@@ -77,8 +78,10 @@ vim.keymap.set("n", "<leader>if", "mzgg=G'z", { desc = 'Indent file' })
 vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = 'Substitute word' })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { desc = 'Make file executable' })
 
+vim.keymap.set("n", "<leader>fi", "/", { desc = 'Search in file' } )
 vim.keymap.set("n", "<leader>om", ":Man ", { desc = 'Open Manual' })
 vim.keymap.set("n", "<leader>of", ":e *", { desc = 'Open file' })
+vim.keymap.set("n", "<leader>ot", ":tabnew <CR>", { desc = 'Open tab' })
 vim.keymap.set("n", "<leader>ff", ":find *", { desc = 'File find' })
 vim.keymap.set("n", "<leader>og", function()
   local word = vim.fn.expand("<cword>")
@@ -92,9 +95,9 @@ end, { desc = "Clear and close quickfix" })
 
 
 -- open shell inside nvim
-vim.o.shell = "/usr/bin/fish"
+vim.o.shell = "/usr/bin/bash"
 vim.keymap.set("n", "<leader>tv", ":vert term <CR>", { desc = 'Open vertical term' })
-vim.keymap.set("n", "<leader>th", ":sp | term <CR>", { desc = 'Open horizontal term' })
+vim.keymap.set("n", "<leader>th", ":10sp | term <CR>", { desc = 'Open horizontal term' })
 
 vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "*",
@@ -135,4 +138,3 @@ end, {})
 
 -- Keybinding to run it
 vim.keymap.set("n", "<leader>rn", ":RenameVar<CR>", { desc = "Rename variable across files" })
-
