@@ -95,7 +95,7 @@ end, { desc = "Clear and close quickfix" })
 
 
 -- open shell inside nvim
-vim.o.shell = "/usr/bin/bash"
+vim.o.shell = "/usr/bin/fish"
 vim.keymap.set("n", "<leader>tv", ":vert term <CR>", { desc = 'Open vertical term' })
 vim.keymap.set("n", "<leader>th", ":10sp | term <CR>", { desc = 'Open horizontal term' })
 
