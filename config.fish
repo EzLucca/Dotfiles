@@ -4,7 +4,7 @@ end
 
 set -gx PATH $HOME/nvim:$PATH
 
-set -g fish_greeting "Time to code"
+set -g fish_greeting ""
 
 #set -gx TERM xterm-256color
 
@@ -36,3 +36,7 @@ end
 
 alias norm="norminette -R CheckForbiddenSourceHeader"
 alias ccc="cc -Wall -Wextra -Werror"
+set -gx PATH /home/edlucca/.local/funcheck/host $PATH
+
+alias out="ccc -g *.c && ./a.out"
+alias lsa="rm a.out && la"
