@@ -1,6 +1,6 @@
 
 vim.cmd("set softtabstop=4")
-vim.cmd("set splitright")
+-- vim.cmd("set splitright")
 vim.cmd("set splitbelow")
 vim.cmd('packadd termdebug')
 
@@ -12,6 +12,7 @@ vim.opt.autoindent = true
 vim.opt.cindent = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+-- vim.opt.splitright = true
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -34,6 +35,24 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 
 vim.g.mapleader = " "
+
+vim.keymap.set('n', '<leader>ec', ':tabnew | Ex ~/Documents/dotfiles/nvim<CR>', { desc = 'Edit nvim config' })
+-- vim.keymap.set('n', '<leader>ee', ':30vsplit ~/Documents/scratch.md<CR>', { desc = 'scratch file' })
+vim.keymap.set('n', '<leader>er', function()
+  vim.cmd('vsplit ~/Documents/scratch.md')
+  vim.cmd('vertical resize 50')
+end, { desc = 'Open scratch file' })
+
+-- Increase window width
+vim.keymap.set('n', '<A-Right>', function()
+  vim.cmd('vertical resize +2')
+end, { noremap = true, silent = true })
+
+-- Decrease window width
+vim.keymap.set('n', '<A-Left>', function()
+  vim.cmd('vertical resize -2')
+end, { noremap = true, silent = true })
+
 
 vim.keymap.set("n", "<leader>fe", vim.cmd.Ex, { desc = 'File explorer' })
 vim.keymap.set("n", "<leader>fs", vim.cmd.w, { desc = 'File Save' })
@@ -97,7 +116,7 @@ end, { desc = "Clear and close quickfix" })
 -- open shell inside nvim
 vim.o.shell = "/usr/bin/fish"
 vim.keymap.set("n", "<leader>tv", ":vert term <CR>", { desc = 'Open vertical term' })
-vim.keymap.set("n", "<leader>th", ":10sp | term <CR>", { desc = 'Open horizontal term' })
+vim.keymap.set("n", "<leader>tt", ":10sp | term <CR>", { desc = 'Open horizontal term' })
 
 vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "*",
