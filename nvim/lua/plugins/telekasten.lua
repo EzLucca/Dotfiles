@@ -8,7 +8,7 @@ return {
     require('telekasten').setup({
       home = home,
       auto_set_filetype = true,
-      dailies = home .. "/daily",
+      dailies = home .. "/Documents/Daily",
       templates = home .. "/templates",
       -- add more options here if needed
     })

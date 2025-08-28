@@ -22,6 +22,7 @@ vim.opt.incsearch = true
 vim.opt.swapfile = false
 
 vim.opt.fillchars = {
+	-- vert = '│', -- single line for vertical splits
 	vert = ' ',      -- No character for vertical splits
 	horiz = ' ',     -- No character for horizontal splits
 	vertleft = ' ',  -- No character for left vertical corners
@@ -31,26 +32,52 @@ vim.opt.fillchars = {
 	eob = ' '
 }
 
+-- Set the color of the separator line
+vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#000000', bold = true })
+
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 
 vim.g.mapleader = " "
 
 vim.keymap.set('n', '<leader>ec', ':tabnew | Ex ~/Documents/dotfiles/nvim<CR>', { desc = 'Edit nvim config' })
--- vim.keymap.set('n', '<leader>ee', ':30vsplit ~/Documents/scratch.md<CR>', { desc = 'scratch file' })
+
+-- Scratch
 vim.keymap.set('n', '<leader>er', function()
-  vim.cmd('vsplit ~/Documents/scratch.md')
-  vim.cmd('vertical resize 50')
-end, { desc = 'Open scratch file' })
+	-- Get the current date
+	local date = os.date("%m-%d")
+	local filepath = string.format("%s/Documents/Daily/note-%s.md", vim.fn.expand("~"), date)
+
+	-- Check if the file exists
+	local file_exists = vim.fn.filereadable(filepath) == 1
+
+	-- Create the file if it doesn't exist
+	if not file_exists then
+		local file = io.open(filepath, "w")
+		if file then
+			file:write("# Notes - " .. os.date("%d-%m-%Y") .. "\n\n")
+			file:close()
+		else
+			vim.notify("Failed to create file: " .. filepath, vim.log.levels.ERROR)
+			return
+		end
+	end
+
+	-- Open the file in a vertical split and resize
+	vim.cmd("vsplit " .. filepath)
+	vim.cmd("vertical resize 50")
+end, { desc = 'Open or create dated scratch file' })
+--
+
 
 -- Increase window width
 vim.keymap.set('n', '<A-Right>', function()
-  vim.cmd('vertical resize +2')
+	vim.cmd('vertical resize +2')
 end, { noremap = true, silent = true })
 
 -- Decrease window width
 vim.keymap.set('n', '<A-Left>', function()
-  vim.cmd('vertical resize -2')
+	vim.cmd('vertical resize -2')
 end, { noremap = true, silent = true })
 
 
@@ -97,19 +124,19 @@ vim.keymap.set("n", "<leader>if", "mzgg=G'z", { desc = 'Indent file' })
 vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = 'Substitute word' })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { desc = 'Make file executable' })
 
-vim.keymap.set("n", "<leader>fi", "/", { desc = 'Search in file' } )
+vim.keymap.set("n", "<leader><leader>", "/", { desc = 'Search in file' } )
 vim.keymap.set("n", "<leader>om", ":Man ", { desc = 'Open Manual' })
 vim.keymap.set("n", "<leader>of", ":e *", { desc = 'Open file' })
 vim.keymap.set("n", "<leader>ot", ":tabnew <CR>", { desc = 'Open tab' })
 vim.keymap.set("n", "<leader>ff", ":find *", { desc = 'File find' })
 vim.keymap.set("n", "<leader>og", function()
-  local word = vim.fn.expand("<cword>")
-  vim.cmd("silent! grep! -rn " .. vim.fn.shellescape(word) .. " **/*")
-  vim.cmd("copen")
+	local word = vim.fn.expand("<cword>")
+	vim.cmd("silent! grep! -rn " .. vim.fn.shellescape(word) .. " **/*")
+	vim.cmd("copen")
 end, { desc = "Grep current word and open quickfix" })
 vim.keymap.set("n", "<leader>qg", function()
-  vim.fn.setqflist({})
-  vim.cmd("cclose")
+	vim.fn.setqflist({})
+	vim.cmd("cclose")
 end, { desc = "Clear and close quickfix" })
 
 
