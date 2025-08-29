@@ -61,4 +61,3 @@ vim.api.nvim_create_autocmd("TermOpen", {
 		vim.keymap.set("t", "<leader>wl", [[<C-\><C-n><C-w>l]], opts)
 	end,
 })
-

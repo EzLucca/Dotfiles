@@ -46,7 +46,7 @@ function M.colorscheme()
 	highlight("Statement", { fg = colors.purple})
 	highlight("StatusLine", { fg = colors.black, bg = colors.line })
 	highlight("StatusLineNC", { fg = colors.black, bg = colors.comment})
-
+	highlight("NormalNC", { fg = colors.black, bg = "#282828"})
 	-- Add more highlight groups as needed
 end
 
