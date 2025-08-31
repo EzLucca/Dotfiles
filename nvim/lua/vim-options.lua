@@ -84,5 +84,5 @@ end
 -- Customize statusline (example)
 -- %f = filename, %y = filetype, %m = modified, %r = readonly
 -- %l = current line, %L = total lines, %p%% = percentage through file
-vim.o.statusline = "%f %y %m %r %= %l/%L %p%% %{%v:lua.function_size_status()%}"
+vim.o.statusline = "%f %y %m %r %= %{%v:lua.function_size_status()%} Ln %l/%L Col %c %p%% "
 
