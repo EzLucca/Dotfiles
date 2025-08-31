@@ -61,3 +61,28 @@ vim.api.nvim_create_autocmd("TermOpen", {
 		vim.keymap.set("t", "<leader>wl", [[<C-\><C-n><C-w>l]], opts)
 	end,
 })
+
+-- Put this in your init.lua (or a separate lua file and require it)
+
+-- Require Treesitter utils
+local ts_utils = require'nvim-treesitter.ts_utils'
+
+-- Function to calculate size of current function
+function _G.function_size_status()
+  local node = ts_utils.get_node_at_cursor()
+  while node and node:type() ~= "function_definition" and node:type() ~= "function_declaration" do
+    node = node:parent()
+  end
+  if node then
+    local start_row, _, end_row, _ = node:range()
+    local lines = end_row - start_row + 1
+    return "[Fn:" .. lines .. "L]"
+  end
+  return ""  -- show nothing if not inside a function
+end
+
+-- Customize statusline (example)
+-- %f = filename, %y = filetype, %m = modified, %r = readonly
+-- %l = current line, %L = total lines, %p%% = percentage through file
+vim.o.statusline = "%f %y %m %r %= %l/%L %p%% %{%v:lua.function_size_status()%}"
+
