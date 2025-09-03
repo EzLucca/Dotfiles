@@ -3,12 +3,12 @@ return {
   dependencies = { "nvim-telescope/telescope.nvim" },
   event = { "BufRead", "BufNewFile" },
   config = function()
-    local home = vim.fn.expand("~/notes") -- change to your notes dir
+    local home = vim.fn.expand("~/Documents") -- change to your notes dir
 
     require('telekasten').setup({
       home = home,
       auto_set_filetype = true,
-      dailies = home .. "/Documents/Daily",
+      dailies = home .. "/Daily",
       templates = home .. "/templates",
       -- add more options here if needed
     })

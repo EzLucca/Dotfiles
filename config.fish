@@ -3,6 +3,7 @@ if status is-interactive
 end
 
 set -gx PATH $HOME/nvim:$PATH
+set -U fish_user_paths $HOME/.local/bin $fish_user_paths
 
 set -g fish_greeting ""
 
@@ -40,3 +41,5 @@ set -gx PATH /home/edlucca/.local/funcheck/host $PATH
 
 alias out="ccc -g *.c && ./a.out"
 alias lsa="rm a.out && la"
+alias val="valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --suppressions=vg.supp"
+alias mk="compiledb make"
