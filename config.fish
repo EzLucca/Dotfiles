@@ -41,5 +41,5 @@ set -gx PATH /home/edlucca/.local/funcheck/host $PATH
 
 alias out="ccc -g *.c && ./a.out"
 alias lsa="rm a.out && la"
-alias val="valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --suppressions=vg.supp"
+alias val="valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --suppressions=vg.supp --trace-children=yes"
 alias mk="compiledb make"
