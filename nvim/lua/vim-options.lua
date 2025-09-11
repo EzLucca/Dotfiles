@@ -90,3 +90,4 @@ end
 -- %l = current line, %L = total lines, %p%% = percentage through file
 vim.o.statusline = "%f %y %m %r %= %{%v:lua.function_size_status()%} Ln %l/%L Col %c %p%% "
 
+vim.keymap.set("n", "<leader>ll", ":!ft_lock<CR>", { desc = '42 lock screen' })
