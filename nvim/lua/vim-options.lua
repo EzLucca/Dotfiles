@@ -7,6 +7,10 @@ vim.cmd('packadd termdebug')
 vim.o.autochdir = true
 vim.o.mouse = "a"
 
+vim.o.undofile = true
+vim.o.undodir = vim.fn.stdpath("cache") .. "/undo"
+vim.fn.mkdir(vim.o.undodir, "p")
+
 vim.opt.smartindent = true
 vim.opt.autoindent = true
 vim.opt.cindent = true
