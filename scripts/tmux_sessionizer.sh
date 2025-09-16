@@ -14,9 +14,9 @@ then
     tmux new-window -t $SESSION:0 -n 'Code'
     tmux send-keys -t 'Code' "nvim ." C-m
 
-    # Setup an additional shell
-    tmux new-window -t $SESSION:1 -n 'Shell'
-    tmux send-keys -t 'Shell' "fish" C-m 'clear' C-m
+    # # Setup an additional shell
+    # tmux new-window -t $SESSION:1 -n 'Shell'
+    # tmux send-keys -t 'Shell' "fish" C-m 'clear' C-m
 fi
 
 # Attach Session, on the Main window
