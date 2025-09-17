@@ -121,7 +121,11 @@ return {
         -- tailwindcss = {},
         -- html = {},
         -- cssls = {},
-        clangd = {},
+        clangd = {
+cmd = { "clangd" },
+  filetypes = { "c", "cpp", "objc", "objcpp" },
+  root_dir = require('lspconfig.util').root_pattern("compile_commands.json", ".clangd", ".git"),
+		},
         lua_ls = {
           settings = {
             Lua = {
