@@ -4,7 +4,7 @@
 if command -v foot >/dev/null; then
     program1="foot -e ./tmux_sessionizer.sh"
 elif command -v gnome-terminal >/dev/null; then
-    program1="gnome-terminal --fish"
+    program1="gnome-terminal -- fish"
 else
     echo "❌ Neither foot nor gnome-terminal found."
     exit 1
