@@ -43,7 +43,7 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 
 -- open shell inside nvim
-vim.o.shell = "/usr/bin/fish"
+vim.o.shell = "/usr/bin/bash"
 vim.keymap.set("n", "<leader>tv", ":vert term <CR>", { desc = 'Open vertical term' })
 vim.keymap.set("n", "<leader>tt", ":10sp | term <CR>", { desc = 'Open horizontal term' })
 

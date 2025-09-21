@@ -1,33 +1,43 @@
-# Minimalist .bashrc
+# # Minimalist .bashrc
 
-# --- Basic Setup ---
-# Set a simple prompt
-export PS1='\[\033[01;32mbash: \W\[\033[00m\] > '
+# Enable 256-color support
+# Enable 24-bit (truecolor) support
+COLOR_RESET="\[\e[0m\]"
+COLOR_USER="\[\e[38;2;175;95;0m\]"      # #af5f00 - dark orange
+COLOR_PATH="\[\e[38;2;95;135;95m\]"      # #5f875f - lime green
+COLOR_HOST="\[\e[38;2;135;95;175m\]"     # #875faf - MediumPurple3
+COLOR_GIT="\[\e[38;2;247;118;142m\]"     # #f7768e - Rosy Red
+COLOR_SYMBOL="\[\e[38;2;255;255;255m\]"  # white for prompt symbol
 
-# Enable Bash completion
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+# Function to get current git branch
+parse_git_branch() {
+	branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+	if [ -n "$branch" ]; then
+		echo "($branch)"
+	fi
+}
+
+# Binary-Anomaly style prompt
+# export PS1="${COLOR_USER}\u${COLOR_RESET}@${COLOR_HOST}\h${COLOR_RESET}:${COLOR_PATH}\w${COLOR_RESET}${COLOR_GIT}\$(parse_git_branch)${COLOR_RESET}\n${COLOR_SYMBOL}❯${COLOR_RESET} "
+export PS1="${COLOR_USER}\u${COLOR_RESET} ${COLOR_PATH}\w${COLOR_RESET}${COLOR_GIT}\$(parse_git_branch)${COLOR_RESET}\n${COLOR_SYMBOL}❯${COLOR_RESET} "
+
+# Optional: ls colors
+if [ -x /usr/bin/dircolors ]; then
+	eval "$(dircolors -b)"
+	alias ls='ls --color=auto'
 fi
 
-# --- Aliases ---
-# Common aliases for frequently used commands
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+# Aliases
+alias norm='norminette -R CheckForbiddenSourceHeader'
+alias ll='ls -lh'
+alias la='ls -lha'
 alias ..='cd ..'
-alias ...='cd ../..'
-alias make='compiledb make'
+alias mk='compiledb make && ctags -R .'
+alias tmx='~/Documents/dotfiles/scripts/tmux_sessionizer.sh'
+# alias grademe='bash -c "$(curl https://grademe.fr)"'
 
-# --- Path ---
-# Add common user-specific binary paths
-# export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+# Enable bash completion
+if [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
+fi
 
-# --- Functions ---
-# Example: a simple function to create a new directory and CD into it
-# mcd() {
-#     mkdir -p "$1" && cd "$1"
-# # }
-
-# --- End of .bashrc ---

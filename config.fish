@@ -43,5 +43,5 @@ alias out="ccc -g *.c && ./a.out"
 alias lsa="rm a.out && la"
 alias val="valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --suppressions=vg.supp --trace-children=yes"
 alias mk="compiledb make && ctags -R ."
-alias tmx="/home/edlucca/Documents/dotfiles/scripts/tmux_sessionizer.sh"
+alias tmx="~/Documents/dotfiles/scripts/tmux_sessionizer.sh"
 # alias grademe='bash -c "$(curl https://grademe.fr)"'
