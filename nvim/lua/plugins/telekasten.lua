@@ -9,7 +9,7 @@ return {
       home = home,
       auto_set_filetype = true,
       dailies = home .. "/Daily",
-      templates = home .. "/templates",
+      -- templates = home .. "/templates",
       -- add more options here if needed
     })
 
