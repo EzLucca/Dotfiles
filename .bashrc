@@ -5,16 +5,31 @@
 COLOR_RESET="\[\e[0m\]"
 COLOR_USER="\[\e[38;2;175;95;0m\]"      # #af5f00 - dark orange
 COLOR_PATH="\[\e[38;2;95;135;95m\]"      # #5f875f - lime green
-COLOR_HOST="\[\e[38;2;135;95;175m\]"     # #875faf - MediumPurple3
-COLOR_GIT="\[\e[38;2;247;118;142m\]"     # #f7768e - Rosy Red
+COLOR_GIT="\[\e[38;2;135;95;175m\]"     # #875faf - MediumPurple3
+COLOR_HOST="\[\e[38;2;247;118;142m\]"     # #f7768e - Rosy Red
 COLOR_SYMBOL="\[\e[38;2;255;255;255m\]"  # white for prompt symbol
 
 # Function to get current git branch
+# parse_git_branch() {
+# 	branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+# 	if [ -n "$branch" ]; then
+# 		echo "($branch)"
+# 	fi
+# }
 parse_git_branch() {
-	branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-	if [ -n "$branch" ]; then
-		echo "($branch)"
-	fi
+    # Get the current branch name
+    branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+
+    if [ -n "$branch" ]; then
+        # Check if there are any changes (staged or unstaged)
+        dirty=$(git status --porcelain 2>/dev/null)
+
+        if [ -n "$dirty" ]; then
+			echo "($branch +)"
+        else
+            echo "($branch)"
+        fi
+    fi
 }
 
 # Binary-Anomaly style prompt
@@ -41,3 +56,6 @@ if [ -f /etc/bash_completion ]; then
 	. /etc/bash_completion
 fi
 
+bind '"\t": menu-complete' # cycle with tab for options
+bind 'set show-all-if-ambiguous on'
+bind 'set show-all-if-unmodified on'
