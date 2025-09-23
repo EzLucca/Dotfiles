@@ -61,3 +61,5 @@ bind 'set show-all-if-ambiguous on'
 bind 'set show-all-if-unmodified on'
 
 export PATH="$HOME/nvim:$PATH" 
+export PATH="$HOME/.local/bin:$PATH"
+

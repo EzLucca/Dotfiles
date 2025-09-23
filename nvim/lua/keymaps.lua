@@ -54,10 +54,14 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { de
 
 vim.keymap.set("n", "<leader><leader>", "/", { desc = 'Search in file' } )
 vim.keymap.set("n", "<leader>om", ":Man ", { desc = 'Open Manual' })
-vim.keymap.set("n", "<leader>of", ":e **/*", { desc = 'Open file' })
 vim.keymap.set("n", "<leader>oe", "<C-^>", { desc = 'Previous file' })
 vim.keymap.set("n", "<leader>ot", ":tabnew <CR>", { desc = 'Open tab' })
+vim.keymap.set("n", "<leader>of", ":e **/*", { desc = 'Open file' })
+
 vim.keymap.set("n", "<leader>ff", ":find *", { desc = 'File find' })
+vim.keymap.set("n", "<leader>s<leader>", ":sfind *", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>v<leader>", ":vert sfind *", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>t<leader>", ":tabfind *", { noremap = true, silent = true })
 
 -- Define the rename command
 vim.api.nvim_create_user_command("RenameVar", function()
@@ -79,3 +83,5 @@ end, {})
 
 -- Keybinding to run it
 vim.keymap.set("n", "<leader>rn", ":RenameVar<CR>", { desc = "Rename variable across files" })
+vim.keymap.set("n", "<leader>ct", "<cmd>!ctags -R .<CR>", { desc = "Create tag file" })
+

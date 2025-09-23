@@ -16,7 +16,17 @@ vim.opt.autoindent = true
 vim.opt.cindent = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+vim.g.netrw_liststyle = 3  -- Lua version
+
 -- vim.opt.splitright = true
+
+-- Native search
+vim.opt.path = { ".", "**" }
+vim.opt.wildmenu = true
+vim.opt.wildmode = "longest:full,full"
+vim.opt.wildignore:append { "*/.git/*", "*/node_modules/*", "*.o", "*.obj", "*.pyc" }
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
