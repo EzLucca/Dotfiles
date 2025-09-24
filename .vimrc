@@ -39,7 +39,7 @@ set ttyfast                     " terminal acceleration
 set clipboard=unnamed           " use system clipboard
 set wildmenu                    
 set wildmode=longest:full,full
-set shell=/usr/bin/fish\ -i
+set shell=/usr/bin/bash\ -i
 set splitright
 set splitbelow
 set fillchars=vert:│
@@ -54,6 +54,7 @@ inoremap jk <ESC>
 nnoremap <leader>rr :source ~/.vimrc<CR>
 nnoremap <leader>sr :e ~/.vimrc<CR>
 nnoremap <leader>= mzgg=G`z
+nnoremap <leader><leader> /
 
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>fq :q<CR>
@@ -70,7 +71,7 @@ nnoremap <leader>wq <c-w><c-q>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-nnoremap <leader>of :e *
+nnoremap <leader>of :e **/*
 nnoremap <leader>om :topleft vert term man 
 
 nnoremap <leader>ff :find *
@@ -83,6 +84,7 @@ packadd termdebug
 nnoremap <leader>gdb :Termdebug ./a.out<CR>
 nnoremap <leader>tv :vert term <CR>
 nnoremap <leader>th :term <CR>
+nnoremap <leader>ob :!gnome-terminal -- bash & <CR>
 
 tmap <Esc> <C-\><C-n> " Escape terminal input mode using Esc key
 

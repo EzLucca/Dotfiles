@@ -16,7 +16,6 @@ vim.opt.autoindent = true
 vim.opt.cindent = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-vim.g.netrw_liststyle = 3  -- Lua version
 
 -- vim.opt.splitright = true
 
@@ -52,10 +51,15 @@ vim.opt.fillchars = {
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 
+-- Set the tags option in Neovim (Lua config)
+vim.opt.tags = './tags;,~/tags'
+
+
 -- open shell inside nvim
 vim.o.shell = "/usr/bin/bash"
-vim.keymap.set("n", "<leader>tv", ":vert term <CR>", { desc = 'Open vertical term' })
-vim.keymap.set("n", "<leader>tt", ":10sp | term <CR>", { desc = 'Open horizontal term' })
+vim.keymap.set("n", "<leader>ov", ":vert term <CR>", { desc = 'Open vertical term' })
+vim.keymap.set("n", "<leader>os", ":10sp | term <CR>", { desc = 'Open horizontal term' })
+vim.keymap.set("n", "<leader>ob", ":!gnome-terminal -- bash & <CR>", { desc = 'Open bash' })
 
 vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "*",

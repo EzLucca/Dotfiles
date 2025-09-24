@@ -1,36 +1,3 @@
--- return {
--- 	{
--- 		"nvim-telescope/telescope-ui-select.nvim",
--- 	},
--- 	{
--- 		"nvim-telescope/telescope.nvim",
--- 		tag = "0.1.5",
--- 		dependencies = { "nvim-lua/plenary.nvim",
--- 		"folke/todo-comments.nvim" },
--- 		config = function()
--- 			require("telescope").setup({
--- 				extensions = {
--- 					["ui-select"] = {
--- 						require("telescope.themes").get_dropdown({}),
--- 					},
--- 				},
--- 			})
--- 			local builtin = require("telescope.builtin")
--- 			vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
--- 			vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
--- 			vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
--- 			vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
--- 			vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
--- 			vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
--- 			vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
--- 			vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
--- 			vim.keymap.set('n', '<leader>so', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
--- 			vim.keymap.set('n', '<leader>bb', builtin.buffers, { desc = '[ ] Find existing buffers' })
--- 			vim.keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
--- 			require("telescope").load_extension("ui-select")
--- 		end,
--- 	},
--- }
 return {
   {
     "nvim-telescope/telescope-ui-select.nvim",
@@ -68,25 +35,25 @@ return {
       telescope.load_extension("ui-select")
 
       -- Key mappings
-      vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-      vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
+      vim.keymap.set('n', '<leader>th', builtin.help_tags, { desc = 'Telescope Help' })
+      vim.keymap.set('n', '<leader>tk', builtin.keymaps, { desc = 'Telescope Keymaps' })
+      vim.keymap.set('n', '<leader>tf', builtin.find_files, { desc = 'Telescope Files' })
+      vim.keymap.set('n', '<leader>ts', builtin.builtin, { desc = 'Telescope Select Telescope' })
+      vim.keymap.set('n', '<leader>tw', builtin.grep_string, { desc = 'Telescope current Word' })
 
       if vim.fn.executable("rg") == 1 then
-        vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep (rg)' })
+        vim.keymap.set('n', '<leader>tg', builtin.live_grep, { desc = 'Telescope Grep (rg)' })
       else
-        vim.keymap.set('n', '<leader>sg', function()
+        vim.keymap.set('n', '<leader>tg', function()
           require("telescope.builtin").find_files({ prompt_title = "Fallback: Find File" })
-        end, { desc = '[S]earch [G]rep fallback to find_files' })
+        end, { desc = 'Telescope Grep find_files' })
       end
 
-      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      vim.keymap.set('n', '<leader>so', builtin.oldfiles, { desc = '[S]earch Recent Files' })
-      vim.keymap.set('n', '<leader>bb', builtin.buffers, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+      vim.keymap.set('n', '<leader>td', builtin.diagnostics, { desc = 'Telescope Diagnostics' })
+      vim.keymap.set('n', '<leader>tr', builtin.resume, { desc = 'Telescope Resume' })
+      vim.keymap.set('n', '<leader>to', builtin.oldfiles, { desc = 'Telescope Recent Files' })
+      vim.keymap.set('n', '<leader>tb', builtin.buffers, { desc = 'Telescope Find buffers' })
+      vim.keymap.set("n", "<leader>tt", "<cmd>TodoTelescope<cr>", { desc = "Telescope Find todos" })
     end,
   },
 }
