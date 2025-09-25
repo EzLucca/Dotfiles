@@ -3,6 +3,7 @@ vim.cmd("set softtabstop=4")
 -- vim.cmd("set splitright")
 vim.cmd("set splitbelow")
 vim.cmd('packadd termdebug')
+vim.opt.clipboard = "unnamedplus"
 
 vim.o.autochdir = true
 vim.o.mouse = "a"
