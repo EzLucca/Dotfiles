@@ -21,7 +21,7 @@ set title
 set showcmd
 set background=dark
 set showmatch                   " shows matching part of bracket pairs (), [], {}
-set autochdir 					" Update the dir everytime change files
+"set autochdir 					" Update the dir everytime change files
 
 "========================================================== Tabs & Indentation =
 
@@ -32,7 +32,7 @@ set smartindent
 " ================================================= C Programming Autocomplete =
 set complete=.,w,b,u,t,i
 set tags=./tags;,tags;
-autocmd FileType c setlocal path+=/usr/include
+"autocmd FileType c setlocal path+=/usr/include
 autocmd FileType c setlocal complete+=i
 
 set ttyfast                     " terminal acceleration
@@ -40,7 +40,7 @@ set clipboard=unnamed           " use system clipboard
 set wildmenu                    
 set wildmode=longest:full,full
 set shell=/usr/bin/bash\ -i
-set splitright
+"set splitright
 set splitbelow
 set fillchars=vert:│
 set fillchars=eob:\ 
@@ -48,6 +48,21 @@ set fillchars=eob:\
 " ===================================================================== Remaps =
 
 let mapleader =  " "
+
+" Netrw config
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 0
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+let g:netrw_sort_sequence = '[\/]$,*,\.bak$,\.o$,\.h$,\.info$,\.swp$,\.obj$'
+
+" Toggle netrw
+nnoremap <leader>fe :Lex<CR>
+
+" Auto open netrw if no file is given
+autocmd VimEnter * if argc() == 0 | Explore | endif
+
 
 inoremap jk <ESC>
 
@@ -58,7 +73,6 @@ nnoremap <leader><leader> /
 
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>fq :q<CR>
-nnoremap <leader>fe :Ex<CR>
 
 nnoremap <leader>wv :vsplit <CR>
 nnoremap <leader>ws :split <CR>
@@ -82,11 +96,19 @@ vnoremap <leader>u :s/^\/\/\s\?//<CR>
 
 packadd termdebug
 nnoremap <leader>gdb :Termdebug ./a.out<CR>
-nnoremap <leader>tv :vert term <CR>
-nnoremap <leader>th :term <CR>
+nnoremap <leader>ov :vert term <CR>
+nnoremap <leader>os :term <CR>
 nnoremap <leader>ob :!gnome-terminal -- bash & <CR>
 
 tmap <Esc> <C-\><C-n> " Escape terminal input mode using Esc key
+
+" Yank to system clipboard
+vnoremap <leader>y "+y
+nnoremap <leader>y "+y
+
+" Paste from system clipboard
+nnoremap <leader>p "+p
+vnoremap <leader>p "+p
 
 " ================================================================ Colorscheme =
 highlight Function  ctermfg=65
