@@ -1,6 +1,5 @@
-"============================================================ General settings =
+"=========================================================== General settings =
 syntax on
-filetype plugin indent on
 
 set path+=**
 set mouse=a
@@ -43,6 +42,7 @@ set shell=/usr/bin/bash\ -i
 "set splitright
 set splitbelow
 set fillchars=vert:\ ,eob:\ 
+set t_vb=
 
 " ===================================================================== Remaps =
 
@@ -58,9 +58,6 @@ let g:netrw_sort_sequence = '[\/]$,*,\.bak$,\.o$,\.h$,\.info$,\.swp$,\.obj$'
 
 " Toggle netrw
 nnoremap <leader>fe :Lex<CR>
-
-" Auto open netrw if no file is given
-autocmd VimEnter * if argc() == 0 | Explore | endif
 
 inoremap jk <ESC>
 
@@ -108,39 +105,35 @@ nnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 
-" === My Custom Colorscheme (cterm) ===
+augroup MyCustomHighlights
+    autocmd!
+    autocmd ColorScheme * call s:MyHighlights()
+    autocmd VimEnter * call s:MyHighlights()
+    autocmd BufWinEnter * call s:MyHighlights()
+augroup END
 
-" fg=grey69, bg=grey15
-execute 'highlight Normal       ctermfg=248 ctermbg=235'
-" grey35
-execute 'highlight LineNr 		ctermfg=240'
-" blue, bg=grey15
-execute 'highlight Constant     ctermfg=75  ctermbg=235'
-" grey35, italic
-execute 'highlight Comment      ctermfg=240 gui=italic'
-" rosy red, bold
-execute 'highlight Error        ctermfg=210 gui=bold'
-" medium purple
-execute 'highlight Function     ctermfg=96'
-" lime green
-execute 'highlight Type         ctermfg=65'
-execute 'highlight Special      ctermfg=65'
-" rose salmon
-execute 'highlight Identifier   ctermfg=138'
-" dark orange, bold
-execute 'highlight Keyword      ctermfg=130 gui=bold'
-" lime green
-execute 'highlight String       ctermfg=65'
-" warm yellow
-execute 'highlight Number       ctermfg=138'
-" medium purple
-execute 'highlight Directory    ctermfg=96'
-execute 'highlight Statement    ctermfg=130'
-" black fg, blue-ish purple bg
-execute 'highlight StatusLine   ctermfg=65  ctermbg=234'
-" black fg, grey35 bg
-execute 'highlight StatusLineNC ctermfg=240  ctermbg=234'
-" dark orange fg, grey15 bg
-execute 'highlight NormalNC     ctermfg=130 ctermbg=235'
+function! s:MyHighlights()
+    execute 'highlight Normal       ctermfg=248 ctermbg=235'
+    execute 'highlight LineNr       ctermfg=240'
+    execute 'highlight Constant     ctermfg=75  ctermbg=235'
+    execute 'highlight Comment      ctermfg=240 gui=italic'
+    execute 'highlight Error        ctermfg=210 gui=bold'
+    execute 'highlight Function     ctermfg=96'
+    execute 'highlight Type         ctermfg=65'
+    execute 'highlight Special      ctermfg=65'
+    execute 'highlight Identifier   ctermfg=138'
+    execute 'highlight Keyword      ctermfg=130 gui=bold'
+    execute 'highlight String       ctermfg=65'
+    execute 'highlight Number       ctermfg=138'
+    execute 'highlight Directory    ctermfg=96'
+    execute 'highlight VertSplit	ctermfg=235'
+    execute 'highlight Statement    ctermfg=130'
+    execute 'highlight StatusLine   ctermfg=65  ctermbg=234'
+    execute 'highlight StatusLineNC ctermfg=240  ctermbg=234'
+    execute 'highlight NormalNC     ctermfg=130 ctermbg=235'
+    execute 'highlight netrwDir     ctermfg=130'
+endfunction
 
-execute 'highlight netrwDir 	ctermfg=130'
+" Trigger once on startup manually
+call s:MyHighlights()
+

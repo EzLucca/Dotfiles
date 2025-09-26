@@ -93,7 +93,7 @@ vim.keymap.set("n", "<leader>ox", function()
     file_dir
   )
   vim.fn.jobstart(cmd, { detach = true }) -- Run it asynchronously
-end, { desc = "Open xterm in file's directory with font size 12" })
+end, { desc = "Open xterm" })
 
 vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "*",
