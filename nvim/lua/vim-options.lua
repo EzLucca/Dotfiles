@@ -2,10 +2,9 @@
 vim.cmd("set softtabstop=4")
 -- vim.cmd("set splitright")
 vim.cmd("set splitbelow")
-vim.cmd('packadd termdebug')
 vim.opt.clipboard = "unnamedplus"
 
-vim.o.autochdir = true
+-- vim.o.autochdir = true
 vim.o.mouse = "a"
 
 vim.o.undofile = true
@@ -59,7 +58,7 @@ vim.opt.tags = './tags;,~/tags'
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 vim.g.netrw_browse_split = 0
-vim.g.netrw_altv = 1
+-- vim.g.netrw_altv = 1
 vim.g.netrw_winsize = 25
 vim.g.netrw_sort_sequence = [[[\/]$,*,\.bak$,\.o$,\.h$,\.info$,\.swp$,\.obj$]]
 
@@ -79,8 +78,22 @@ vim.api.nvim_create_autocmd("VimEnter", {
 vim.o.shell = "/usr/bin/bash"
 vim.keymap.set("n", "<leader>ov", ":vert term <CR>", { desc = 'Open vertical term' })
 vim.keymap.set("n", "<leader>os", ":10sp | term <CR>", { desc = 'Open horizontal term' })
-vim.keymap.set("n", "<leader>ob", ":!gnome-terminal -- bash & <CR>", { desc = 'Open bash' })
-vim.keymap.set("n", "<leader>ox", ":!xterm -fa 'Monospace' -fs 12 -e bash<CR>", { desc = 'Open bash with font size 12' })
+-- vim.keymap.set("n", "<leader>ox", ":!xterm -fa 'Monospace' -fs 12 -e bash<CR>", { desc = 'Open bash with font size 12' })
+
+vim.keymap.set("n", "<leader>ob", function()
+  local file_dir = vim.fn.expand('%:p:h') -- Get the directory of the current file
+  local cmd = string.format("gnome-terminal --working-directory='%s' -- bash &", file_dir)
+  vim.fn.jobstart(cmd, { detach = true }) -- Run it without blocking Neovim
+end, { desc = "Open bash" })
+
+vim.keymap.set("n", "<leader>ox", function()
+  local file_dir = vim.fn.expand('%:p:h') -- Get the current file's directory
+  local cmd = string.format(
+    "xterm -fa 'Monospace' -fs 12 -e 'cd \"%s\" && exec bash' &",
+    file_dir
+  )
+  vim.fn.jobstart(cmd, { detach = true }) -- Run it asynchronously
+end, { desc = "Open xterm in file's directory with font size 12" })
 
 vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "*",

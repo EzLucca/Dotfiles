@@ -14,7 +14,7 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch                   " incremental searching
 set scrolloff=10
-set sidescrolloff=10
+set sidescrolloff=0
 set relativenumber
 set laststatus=2
 set title
@@ -42,8 +42,7 @@ set wildmode=longest:full,full
 set shell=/usr/bin/bash\ -i
 "set splitright
 set splitbelow
-set fillchars=vert:│
-set fillchars=eob:\ 
+set fillchars=vert:\ ,eob:\ 
 
 " ===================================================================== Remaps =
 
@@ -62,7 +61,6 @@ nnoremap <leader>fe :Lex<CR>
 
 " Auto open netrw if no file is given
 autocmd VimEnter * if argc() == 0 | Explore | endif
-
 
 inoremap jk <ESC>
 
