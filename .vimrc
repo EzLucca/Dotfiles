@@ -1,6 +1,6 @@
 "============================================================ General settings =
 syntax on
-filetype on
+filetype plugin indent on
 
 set path+=**
 set mouse=a
@@ -68,7 +68,7 @@ inoremap jk <ESC>
 
 nnoremap <leader>rr :source ~/.vimrc<CR>
 nnoremap <leader>sr :e ~/.vimrc<CR>
-nnoremap <leader>= mzgg=G`z
+nnoremap <leader>if mzgg=G`z
 nnoremap <leader><leader> /
 
 nnoremap <leader>fs :w<CR>
@@ -110,20 +110,39 @@ nnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 
-" ================================================================ Colorscheme =
-highlight Function  ctermfg=65
-highlight Type      ctermfg=65
-highlight Special   ctermfg=65
-highlight PreProc   ctermfg=65
-highlight Comment 	ctermfg=240
-highlight LineNr 	ctermfg=240
-highlight Statement ctermfg=130
-highlight vimvar 	ctermfg=140
-highlight netrwDir 	ctermfg=140
-highlight normal 	ctermfg=250
-highlight Pmenu      ctermfg=white ctermbg=darkgray guifg=#eeeeee guibg=#3a3a3a
-highlight PmenuSel   ctermfg=black ctermbg=lightgray guifg=#000000 guibg=#aaaaaa
-highlight StatusLine   ctermfg=65 ctermbg=234
-highlight StatusLineNC guifg=#444444 guibg=#121212 ctermfg=240 ctermbg=234
-highlight VertSplit cterm=NONE ctermfg=black ctermbg=NONE
-highlight Normal guibg=#343541 guifg=#d4d4d4
+" === My Custom Colorscheme (cterm) ===
+
+" fg=grey69, bg=grey15
+execute 'highlight Normal       ctermfg=248 ctermbg=235'
+" grey35
+execute 'highlight LineNr 		ctermfg=240'
+" blue, bg=grey15
+execute 'highlight Constant     ctermfg=75  ctermbg=235'
+" grey35, italic
+execute 'highlight Comment      ctermfg=240 gui=italic'
+" rosy red, bold
+execute 'highlight Error        ctermfg=210 gui=bold'
+" medium purple
+execute 'highlight Function     ctermfg=96'
+" lime green
+execute 'highlight Type         ctermfg=65'
+execute 'highlight Special      ctermfg=65'
+" rose salmon
+execute 'highlight Identifier   ctermfg=138'
+" dark orange, bold
+execute 'highlight Keyword      ctermfg=130 gui=bold'
+" lime green
+execute 'highlight String       ctermfg=65'
+" warm yellow
+execute 'highlight Number       ctermfg=138'
+" medium purple
+execute 'highlight Directory    ctermfg=96'
+execute 'highlight Statement    ctermfg=130'
+" black fg, blue-ish purple bg
+execute 'highlight StatusLine   ctermfg=65  ctermbg=234'
+" black fg, grey35 bg
+execute 'highlight StatusLineNC ctermfg=240  ctermbg=234'
+" dark orange fg, grey15 bg
+execute 'highlight NormalNC     ctermfg=130 ctermbg=235'
+
+execute 'highlight netrwDir 	ctermfg=130'

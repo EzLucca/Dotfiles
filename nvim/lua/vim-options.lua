@@ -55,12 +55,32 @@ vim.opt.scrolloff = 8
 -- Set the tags option in Neovim (Lua config)
 vim.opt.tags = './tags;,~/tags'
 
+-- Netrw config (Lua equivalent)
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
+vim.g.netrw_browse_split = 0
+vim.g.netrw_altv = 1
+vim.g.netrw_winsize = 25
+vim.g.netrw_sort_sequence = [[[\/]$,*,\.bak$,\.o$,\.h$,\.info$,\.swp$,\.obj$]]
+
+-- Toggle netrw with <leader>fe
+vim.keymap.set("n", "<leader>fe", ":Lex<CR>", { noremap = true, silent = true })
+
+-- Auto open netrw if no file is given
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if vim.fn.argc() == 0 then
+      vim.cmd("Explore")
+    end
+  end
+})
 
 -- open shell inside nvim
 vim.o.shell = "/usr/bin/bash"
 vim.keymap.set("n", "<leader>ov", ":vert term <CR>", { desc = 'Open vertical term' })
 vim.keymap.set("n", "<leader>os", ":10sp | term <CR>", { desc = 'Open horizontal term' })
 vim.keymap.set("n", "<leader>ob", ":!gnome-terminal -- bash & <CR>", { desc = 'Open bash' })
+vim.keymap.set("n", "<leader>ox", ":!xterm -fa 'Monospace' -fs 12 -e bash<CR>", { desc = 'Open bash with font size 12' })
 
 vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "*",
