@@ -81,3 +81,11 @@ end, {})
 
 -- Keybinding to run it
 vim.keymap.set("n", "<leader>rn", ":RenameVar<CR>", { desc = "Rename variable across files" })
+
+-- Create the tag file on current directory
+vim.keymap.set("n", "<leader>ct", function()
+  local file_dir = vim.fn.expand("%:p:h")      -- Get the directory of the current file
+  vim.cmd("lcd " .. file_dir)                  -- Change local working directory
+  vim.cmd("!ctags -R .")                       -- Run ctags in that directory
+end, { desc = "Create tag file in current file's directory" })
+

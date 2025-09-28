@@ -55,4 +55,4 @@ vim.keymap.set("n", "<leader>s<leader>", ":sfind *", { noremap = true, silent = 
 vim.keymap.set("n", "<leader>v<leader>", ":vert sfind *", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>t<leader>", ":tabfind *", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>ct", "<cmd>!ctags -R .<CR>", { desc = "Create tag file" })
+-- vim.keymap.set("n", "<leader>ct", "<cmd>!ctags -R .<CR>", { desc = "Create tag file" })
