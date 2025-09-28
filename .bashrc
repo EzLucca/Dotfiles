@@ -10,12 +10,6 @@ COLOR_HOST="\[\e[38;2;247;118;142m\]"     # #f7768e - Rosy Red
 COLOR_SYMBOL="\[\e[38;2;255;255;255m\]"  # white for prompt symbol
 
 # Function to get current git branch
-# parse_git_branch() {
-# 	branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-# 	if [ -n "$branch" ]; then
-# 		echo "($branch)"
-# 	fi
-# }
 parse_git_branch() {
     # Get the current branch name
     branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)

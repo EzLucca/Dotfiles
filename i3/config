@@ -219,3 +219,6 @@ client.unfocused        #222222 #222222 #888888 #5f875f #5f875f
 exec --no-startup-id xrandr --output HDMI-1 --auto --right-of eDP-1
 exec --no-startup-id udiskie --tray
 
+bindsym $mod+m exec arandr
+
+

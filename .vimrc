@@ -93,7 +93,8 @@ packadd termdebug
 nnoremap <leader>gdb :Termdebug ./a.out<CR>
 nnoremap <leader>ov :vert term <CR>
 nnoremap <leader>os :term <CR>
-nnoremap <leader>ob :!gnome-terminal -- bash & <CR>
+"nnoremap <leader>ob :!gnome-terminal -- bash & <CR>
+nnoremap <leader>ob :!xterm -fa 'Monospace' -fs 10 -e bash &<CR>
 
 tmap <Esc> <C-\><C-n> " Escape terminal input mode using Esc key
 

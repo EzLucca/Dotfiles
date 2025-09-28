@@ -3,17 +3,6 @@ vim.g.mapleader = " "
 
 vim.keymap.set('n', '<leader>ec', ':tabnew | Ex ~/Documents/dotfiles/nvim<CR>', { desc = 'Edit nvim config' })
 
--- Increase window width
-vim.keymap.set('n', '<A-Right>', function()
-	vim.cmd('vertical resize +2')
-end, { noremap = true, silent = true })
-
--- Decrease window width
-vim.keymap.set('n', '<A-Left>', function()
-	vim.cmd('vertical resize -2')
-end, { noremap = true, silent = true })
-
-
 vim.keymap.set("n", "<leader>fe", vim.cmd.Ex, { desc = 'File explorer' })
 vim.keymap.set("n", "<leader>fs", vim.cmd.w, { desc = 'File Save' })
 vim.keymap.set("n", "<leader>fq", vim.cmd.q, { desc = 'File Quit' })
@@ -34,6 +23,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+vim.keymap.set("n", "<leader>ov", ":vert term <CR>", { desc = 'Open vertical term' })
+vim.keymap.set("n", "<leader>os", ":10sp | term <CR>", { desc = 'Open horizontal term' })
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -63,25 +55,4 @@ vim.keymap.set("n", "<leader>s<leader>", ":sfind *", { noremap = true, silent = 
 vim.keymap.set("n", "<leader>v<leader>", ":vert sfind *", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>t<leader>", ":tabfind *", { noremap = true, silent = true })
 
--- Define the rename command
-vim.api.nvim_create_user_command("RenameVar", function()
-	local old = vim.fn.input("Old variable name: ")
-	if old == "" then return end
-
-	local new = vim.fn.input("New variable name: ")
-	if new == "" then return end
-
-	local files = vim.fn.input("Files to search: ")
-	-- Recursively load .c and .h files
-	local arg = string.format("args %s", files)
-	vim.cmd(arg)
-
-	-- Perform rename
-	local cmd = string.format("argdo %%s/\\<%s\\>/%s/gce | update", old, new)
-	vim.cmd(cmd)
-end, {})
-
--- Keybinding to run it
-vim.keymap.set("n", "<leader>rn", ":RenameVar<CR>", { desc = "Rename variable across files" })
 vim.keymap.set("n", "<leader>ct", "<cmd>!ctags -R .<CR>", { desc = "Create tag file" })
-
