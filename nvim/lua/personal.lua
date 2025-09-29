@@ -61,27 +61,6 @@ function _G.function_size_status()
   return ""  -- show nothing if not inside a function
 end
 
--- Define the rename command
-vim.api.nvim_create_user_command("RenameVar", function()
-	local old = vim.fn.input("Old variable name: ")
-	if old == "" then return end
-
-	local new = vim.fn.input("New variable name: ")
-	if new == "" then return end
-
-	local files = vim.fn.input("Files to search: ")
-	-- Recursively load .c and .h files
-	local arg = string.format("args %s", files)
-	vim.cmd(arg)
-
-	-- Perform rename
-	local cmd = string.format("argdo %%s/\\<%s\\>/%s/gce | update", old, new)
-	vim.cmd(cmd)
-end, {})
-
--- Keybinding to run it
-vim.keymap.set("n", "<leader>rn", ":RenameVar<CR>", { desc = "Rename variable across files" })
-
 -- Create the tag file on current directory
 vim.keymap.set("n", "<leader>ct", function()
   local file_dir = vim.fn.expand("%:p:h")      -- Get the directory of the current file
@@ -89,3 +68,8 @@ vim.keymap.set("n", "<leader>ct", function()
   vim.cmd("!ctags -R .")                       -- Run ctags in that directory
 end, { desc = "Create tag file in current file's directory" })
 
+-- Search file on current folder
+vim.keymap.set("n", "<leader>of", function()
+  local dir = vim.fn.expand("%:p:h") .. "/"
+  vim.api.nvim_feedkeys(":e " .. dir, "n", false)
+end, { desc = "Edit file in current file's directory" })
