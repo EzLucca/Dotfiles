@@ -4,6 +4,7 @@ vim.cmd("set splitbelow")
 vim.opt.clipboard = "unnamedplus"
 
 vim.o.mouse = "a"
+vim.o.signcolumn = "yes"
 
 vim.o.undofile = true
 vim.o.undodir = vim.fn.stdpath("cache") .. "/undo"
