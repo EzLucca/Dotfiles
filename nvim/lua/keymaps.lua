@@ -48,7 +48,6 @@ vim.keymap.set("n", "<leader><leader>", "/", { desc = 'Search in file' } )
 vim.keymap.set("n", "<leader>om", ":Man ", { desc = 'Open Manual' })
 vim.keymap.set("n", "<leader>pt", "<C-^>", { desc = 'Previous file' })
 vim.keymap.set("n", "<leader>ot", ":tabnew <CR>", { desc = 'Open tab' })
-vim.keymap.set("n", "<leader>of", ":e **/*", { desc = 'Open file' })
 
 vim.keymap.set("n", "<leader>ff", ":find *", { desc = 'File find' })
 vim.keymap.set("n", "<leader>s<leader>", ":sfind *", { noremap = true, silent = true })

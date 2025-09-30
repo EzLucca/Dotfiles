@@ -66,3 +66,24 @@ vim.o.shell = "/usr/bin/bash"
 vim.o.statusline = "%f %y %m %r %= %{%v:lua.function_size_status()%} Ln %l/%L Col %c %p%% "
 
 vim.keymap.set("n", "<leader>ll", ":!ft_lock<CR>", { desc = '42 lock screen' })
+
+
+-- Define the session path
+local session_path = vim.fn.expand("~") .. "/Documents/my_session.vim"
+
+-- Save the session
+vim.keymap.set("n", "<leader>ss", function()
+  vim.cmd("mksession! " .. session_path)
+  vim.notify("Session saved!", vim.log.levels.INFO)
+end, { desc = "Save session" })
+
+-- Load the session
+vim.keymap.set("n", "<leader>sl", function()
+  if vim.fn.filereadable(session_path) == 1 then
+    vim.cmd("source " .. session_path)
+    vim.notify("Session loaded!", vim.log.levels.INFO)
+  else
+    vim.notify("No saved session found.", vim.log.levels.WARN)
+  end
+end, { desc = "Load session" })
+
