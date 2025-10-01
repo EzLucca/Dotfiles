@@ -55,3 +55,9 @@ vim.keymap.set("n", "<leader>v<leader>", ":vert sfind *", { noremap = true, sile
 vim.keymap.set("n", "<leader>t<leader>", ":tabfind *", { noremap = true, silent = true })
 
 -- vim.keymap.set("n", "<leader>ct", "<cmd>!ctags -R .<CR>", { desc = "Create tag file" })
+vim.api.nvim_set_keymap('n', '<C-]>', '', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-]>', ':tag <C-R><C-W><CR>', { noremap = true, silent = true })
+
+-- Remap LSP go-to-definition to Ctrl-Alt-]
+vim.api.nvim_set_keymap('n', '<leader>gd','<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+

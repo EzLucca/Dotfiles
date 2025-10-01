@@ -21,3 +21,4 @@ require("comment")
 require("personal")
 require("lsp-config")
 vim.cmd("colorscheme mytheme")
+

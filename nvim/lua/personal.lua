@@ -70,6 +70,6 @@ end, { desc = "Create tag file in current file's directory" })
 
 -- Search file on current folder
 vim.keymap.set("n", "<leader>of", function()
-  local dir = vim.fn.expand("%:p:h") .. "/"
+  local dir = vim.fn.expand("%:p:h") .. "/*"
   vim.api.nvim_feedkeys(":e " .. dir, "n", false)
 end, { desc = "Edit file in current file's directory" })
