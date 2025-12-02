@@ -43,6 +43,8 @@ alias la='ls -lha'
 alias ccc='cc -Wall -Wextra -Werror'
 alias mk='compiledb make && ctags -R .'
 alias tmx='~/Documents/dotfiles/scripts/tmux_sessionizer.sh'
+alias open='xdg-open'
+alias music='mpv && ncmpcpp'
 # alias grademe='bash -c "$(curl https://grademe.fr)"'
 
 # Enable bash completion
