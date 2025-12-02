@@ -40,7 +40,7 @@ fi
 alias norm='norminette -R CheckForbiddenSourceHeader'
 alias ll='ls -lh'
 alias la='ls -lha'
-alias ..='cd ..'
+alias ccc='cc -Wall -Wextra -Werror'
 alias mk='compiledb make && ctags -R .'
 alias tmx='~/Documents/dotfiles/scripts/tmux_sessionizer.sh'
 # alias grademe='bash -c "$(curl https://grademe.fr)"'

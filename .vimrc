@@ -50,14 +50,14 @@ let mapleader =  " "
 
 " Netrw config
 let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 0
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
+"let g:netrw_liststyle = 3
+"let g:netrw_browse_split = 0
+"let g:netrw_altv = 1
+"let g:netrw_winsize = 25
 let g:netrw_sort_sequence = '[\/]$,*,\.bak$,\.o$,\.h$,\.info$,\.swp$,\.obj$'
 
 " Toggle netrw
-nnoremap <leader>fe :Lex<CR>
+nnoremap <leader>fe :Ex<CR>
 
 inoremap jk <ESC>
 
