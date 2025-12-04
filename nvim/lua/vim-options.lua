@@ -66,9 +66,6 @@ vim.o.shell = "/usr/bin/bash"
 -- %l = current line, %L = total lines, %p%% = percentage through file
 vim.o.statusline = "%f %y %m %r %= %{%v:lua.function_size_status()%} Ln %l/%L Col %c %p%% "
 
-vim.keymap.set("n", "<leader>ll", ":!ft_lock<CR>", { desc = '42 lock screen' })
-
-
 -- Define the session path
 local session_path = vim.fn.expand("~") .. "/Documents/my_session.vim"
 
