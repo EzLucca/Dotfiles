@@ -46,6 +46,7 @@ alias tmx='~/Documents/dotfiles/scripts/tmux_sessionizer.sh'
 alias open='xdg-open'
 alias music='mpv && ncmpcpp'
 alias ytd-mp3='yt-dlp --extract-audio --audio-format mp3 --output'
+alias upgit='~/Documents/dotfiles/scrips/git_automate.sh'
 # alias grademe='bash -c "$(curl https://grademe.fr)"'
 
 # Enable bash completion
