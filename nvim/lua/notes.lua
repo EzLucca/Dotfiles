@@ -3,7 +3,7 @@
 vim.keymap.set('n', '<leader>er', function()
 	-- Get the current date
 	local date = os.date("%m-%d")
-	local filepath = string.format("%s/Documents/Daily/note-%s.md", vim.fn.expand("~"), date)
+	local filepath = string.format("%s/Documents/Notes/note-%s.md", vim.fn.expand("~"), date)
 
 	-- Check if the file exists
 	local file_exists = vim.fn.filereadable(filepath) == 1
