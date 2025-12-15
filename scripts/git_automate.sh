@@ -3,6 +3,7 @@
 FOLDERS=(
     "$HOME/Documents/Notes"
     "$HOME/Documents/dotfiles"
+    "$HOME/Documents/42-Exams"
 )
 
 for folder in "${FOLDERS[@]}"; do
