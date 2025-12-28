@@ -45,7 +45,9 @@ alias mk='compiledb make && ctags -R .'
 alias tmx='~/Documents/dotfiles/scripts/tmux_sessionizer.sh'
 alias open='xdg-open'
 alias music='mpd && mpv && ncmpcpp'
-alias ytd-mp3='yt-dlp --extract-audio --audio-format mp3 --output'
+# alias ytd-mp3='yt-dlp --extract-audio --audio-format mp3 --output'
+alias ytd-mp3='yt-dlp -f bestaudio -x --audio-format mp3 --audio-quality 0'
+
 alias upgit='~/Documents/dotfiles/scripts/git_automate.sh'
 # alias grademe='bash -c "$(curl https://grademe.fr)"'
 
