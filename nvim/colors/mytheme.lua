@@ -30,6 +30,7 @@ function M.colorscheme()
 	vim.g.colors_name = "mytheme"
 
 	-- Example highlights
+	-- highlight("Normal", { fg = colors.fg }) -- For transparency
 	highlight("Normal", { fg = colors.fg, bg = colors.bg })
 	highlight("@Variable", { fg = colors.salmon, bg = colors.bg })
 	highlight("@Constant", { fg = colors.blue, bg = colors.bg })
