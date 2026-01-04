@@ -73,3 +73,23 @@ vim.keymap.set("n", "<leader>of", function()
   local dir = vim.fn.expand("%:p:h") .. "/*"
   vim.api.nvim_feedkeys(":e " .. dir, "n", false)
 end, { desc = "Edit file in current file's directory" })
+
+
+-- Open PDF with Zathura from netrw using <leader>z
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "netrw",
+  callback = function()
+    vim.keymap.set("n", "<leader>z", function()
+      local filename = vim.fn.expand("<cfile>")
+      local dir = vim.b.netrw_curdir
+      local filepath = dir .. "/" .. filename
+
+      if filename:match("%.pdf$") then
+        vim.fn.jobstart({ "zathura", filepath }, { detach = true })
+      else
+        print("Not a PDF file")
+      end
+    end, { buffer = true, silent = true })
+  end,
+})
+
