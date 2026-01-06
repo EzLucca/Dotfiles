@@ -1,6 +1,6 @@
 
 -- Scratch
-vim.keymap.set('n', '<leader>er', function()
+vim.keymap.set('n', '<leader>nc', function()
 	-- Get the current date
 	local date = os.date("%m-%d")
 	local filepath = string.format("%s/Documents/Notes/note-%s.md", vim.fn.expand("~"), date)
@@ -25,3 +25,5 @@ vim.keymap.set('n', '<leader>er', function()
 	vim.cmd("vertical resize 50")
 end, { desc = 'Open or create dated scratch file' })
 --
+--
+vim.keymap.set('n', '<leader>nf', ':tabnew | Ex ~/Documents/Notes/<CR>', { desc = 'Search notes' })
