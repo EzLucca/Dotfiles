@@ -1,6 +1,6 @@
 
 -- Scratch
-vim.keymap.set('n', '<leader>nc', function()
+vim.keymap.set('n', '<leader>nj', function()
 	-- Get the current date
 	local date = os.date("%m-%d")
 	local filepath = string.format("%s/Documents/Notes/note-%s.md", vim.fn.expand("~"), date)
