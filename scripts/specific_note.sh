@@ -9,18 +9,19 @@ if [[ -z "$NAME" ]]; then
   exit 1
 fi
 
-DATE_HUMAN="$(date +'%d-%m-%Y')"
-DATE_FILE="$(date +'%m-%d')"
+DATE_UPDATE="$(date +'%Y-%m-%d-%H-%M')"
 
 NOTES_DIR="$HOME/Documents/Notes"
 mkdir -p "$NOTES_DIR"
 
-SLUG=$(echo "$NAME" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-')
-FILEPATH="$NOTES_DIR/$SLUG$DATE_FILE.md"
+SLUG=$(echo "$NAME" | tr '[:upper:]' '[:lower:]')
+FILEPATH="$NOTES_DIR/$SLUG.md"
 
 if [[ ! -f "$FILEPATH" ]]; then
 cat > "$FILEPATH" <<EOF
-# $NAME – $DATE_HUMAN
+last update: $DATE_UPDATE
+
+# TITLE: $NAME
 
 ## Project
 - 
