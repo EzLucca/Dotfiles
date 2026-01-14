@@ -31,10 +31,11 @@ vim.api.nvim_create_autocmd("TermOpen", {
 		local opts = { buffer = 0, noremap = true }
 
 		-- Exit terminal mode
-		vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
+		-- vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
 
 		-- Close terminal with <leader>q
-		vim.keymap.set("t", "<leader>q", [[<C-\><C-n>:bd!<CR>]], opts)
+		-- vim.keymap.set("t", "<leader>q", [[<C-\><C-n>:bd!<CR>]], opts)
+		vim.keymap.set("t", "<Esc>", [[<C-\><C-n>:bd!<CR>]], opts)
 
 		-- Navigate windows from terminal
 		vim.keymap.set("t", "<leader>wh", [[<C-\><C-n><C-w>h]], opts)
