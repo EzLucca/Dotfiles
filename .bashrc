@@ -47,6 +47,7 @@ alias open='xdg-open'
 alias music='mpd && mpv && ncmpcpp'
 # alias ytd-mp3='yt-dlp --extract-audio --audio-format mp3 --output'
 alias ytd-mp3='yt-dlp -f bestaudio -x --audio-format mp3 --audio-quality 0'
+alias fltrdr="fltrdr --config-base ~/.config/fltrdr"
 
 alias DEFCON1='valgrind --leak-check=full --track-origins=yes'
 alias DEFCON2='valgrind --leak-check=full --show-leak-kinds=all'
