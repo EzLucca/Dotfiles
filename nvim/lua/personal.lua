@@ -107,6 +107,6 @@ vim.api.nvim_create_autocmd("FileType", {
       else
         print("Not a PDF file")
       end
-    end, { desc = "zathura pdf" }, { buffer = true, silent = true })
+    end, { desc = "open pdf" }, { buffer = true, silent = true })
   end,
 })
