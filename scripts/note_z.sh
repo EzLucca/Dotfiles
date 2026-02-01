@@ -56,6 +56,38 @@ echo "Created: $FILE"
 # --------------------------------------------------------------
 # UPDATE TAG INDEX
 # --------------------------------------------------------------
+# update_tags() {
+#     mkdir -p "$TAGS_DIR"
+#     rm -f "$TAGS_DIR"/*.md
+#
+#     for file in "$NOTES_DIR"/*.md; do
+#         [[ ! -f "$file" ]] && continue
+#
+#         ID=$(grep "^id:" "$file" | awk '{print $2}')
+#         FILENAME=$(basename "$file")
+#
+#         # Strictly extract only valid tags
+#         TAGS=$(grep -A 50 "^[[:space:]]*tags:" "$file" | grep "^[[:space:]]*-" | \
+#         sed -En 's/^[[:space:]]*- \[#([a-zA-Z0-9_-]+)\]\(tags\/[a-zA-Z0-9_-]+\.md\)/\1/p')
+#
+#         for tag in $TAGS; do
+#             tagfile="$TAGS_DIR/$tag.md"
+#
+#             if [[ ! -f "$tagfile" ]]; then
+#                 cat > "$tagfile" <<EOF
+# # ${tag^}
+#
+# ## Notes
+# EOF
+#             fi
+#
+#             grep -q "\[$ID\]" "$tagfile" || \
+#                 echo "- [$ID]($FILENAME)" >> "$tagfile"
+#         done
+#     done
+#
+#     echo "Tag indexes updated."
+# }
 update_tags() {
     mkdir -p "$TAGS_DIR"
     rm -f "$TAGS_DIR"/*.md
@@ -66,9 +98,11 @@ update_tags() {
         ID=$(grep "^id:" "$file" | awk '{print $2}')
         FILENAME=$(basename "$file")
 
-        # Strictly extract only valid tags
-        TAGS=$(grep -A 50 "^[[:space:]]*tags:" "$file" | grep "^[[:space:]]*-" | \
-        sed -En 's/^[[:space:]]*- \[#([a-zA-Z0-9_-]+)\]\(tags\/[a-zA-Z0-9_-]+\.md\)/\1/p')
+        # Extract all inline tags on the 'tags:' line
+        TAGS=$(grep "^tags:" "$file" \
+               | sed -e 's/tags: //' \
+               | tr ' ' '\n' \
+               | sed -n 's/\[#\([a-zA-Z0-9_-]\+\)\](tags\/[a-zA-Z0-9_-]\+\.md)/\1/p')
 
         for tag in $TAGS; do
             tagfile="$TAGS_DIR/$tag.md"
