@@ -42,10 +42,10 @@ create_note() {
 		}
 
 cat > "$FILE" <<EOF
-id: $ID
-last update: $DATE_UPDATE
-tags:
-$(for t in $TAGS; do echo "- [#$t](tags/$t.md)"; done)
+id: $ID  
+last update: $DATE_UPDATE  
+tags:  
+$(for t in $TAGS; do echo "- [#$t](tags/$t.md)  "; done)
 
 # TITLE: $NAME
 
