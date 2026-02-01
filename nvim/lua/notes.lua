@@ -46,3 +46,20 @@ vim.api.nvim_create_user_command("GrepAll", function(opts)
   grep_all(opts.fargs)
 end, { nargs = "+" })
 
+-- Leader + p: Save, generate HTML with Pandoc, open in new browser window
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>pp",
+  [[
+:w
+:!pandoc % -s -o %:r.html --css=~/Documents/dotfiles/scripts/github-markdown.css --metadata title="%:t"
+:!xdg-open %:r.html
+]],
+  { noremap = true, silent = true, expr = false }
+)
+
+vim.keymap.set("n", "<leader>pg", function()
+  vim.cmd("vsplit")
+  vim.cmd("terminal glow -s dark " .. vim.fn.expand("%:p"))
+end, { silent = true })
+
