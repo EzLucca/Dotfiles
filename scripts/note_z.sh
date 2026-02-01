@@ -44,22 +44,10 @@ create_note() {
 cat > "$FILE" <<EOF
 id: $ID  
 last update: $DATE_UPDATE  
-tags:  
-$(for t in $TAGS; do echo "- [#$t](tags/$t.md)  "; done)
+tags: $(for t in $TAGS; do printf "[#%s](tags/%s.md) " "$t" "$t"; done)
 
 # TITLE: $NAME
 
-## Project
-- 
-
-## Tasks
-- [ ] 
-
-## Bugs
-- [ ] 
-
-## Notes
-- 
 EOF
 
 echo "Created: $FILE"
