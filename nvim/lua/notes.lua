@@ -12,3 +12,37 @@ vim.keymap.set('n', '<leader>nn', ':! ~/Documents/dotfiles/scripts/note_z.sh ', 
 vim.keymap.set('n', '<leader>nu', ':! ~/Documents/dotfiles/scripts/note_z.sh --tags<CR>', { desc = 'Update tags' })
 
 vim.keymap.set('n', '<leader>nf', ':tabnew | Ex ~/Documents/Notes/<CR>', { desc = 'Search notes' })
+
+local function grep_all(patterns)
+  if #patterns < 2 then
+    print("Provide at least 2 patterns")
+    return
+  end
+
+  -- Build PCRE lookahead regex
+  local lookaheads = {}
+  for _, pat in ipairs(patterns) do
+    table.insert(lookaheads, "(?=.*" .. pat .. ")")
+  end
+
+  local regex = "(?s)" .. table.concat(lookaheads)
+
+  local cmd = {
+    "grep",
+    "-rPl",
+    regex,
+    ".",
+  }
+
+  vim.fn.setqflist({}, " ", {
+    title = "grep all: " .. table.concat(patterns, ", "),
+    lines = vim.fn.systemlist(cmd),
+  })
+
+  vim.cmd("copen")
+end
+
+vim.api.nvim_create_user_command("GrepAll", function(opts)
+  grep_all(opts.fargs)
+end, { nargs = "+" })
+
