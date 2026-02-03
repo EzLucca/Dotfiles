@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [ $# -ne 1 ]; then
-    echo "Usage: $0 ClassName"
-    exit 1
+	echo "Usage: $0 ClassName"
+	exit 1
 fi
 
 CLASS_NAME=$1
@@ -16,11 +16,11 @@ cat <<EOF > $HEADER_FILE
 #define $INCLUDE_GUARD
 
 class $CLASS_NAME {
-public:
-    $CLASS_NAME();
-    ~$CLASS_NAME();
+	public:
+	$CLASS_NAME();
+	~$CLASS_NAME();
 
-private:
+	private:
 };
 
 #endif // $INCLUDE_GUARD
