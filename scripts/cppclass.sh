@@ -16,11 +16,11 @@ cat <<EOF > $HEADER_FILE
 #define $INCLUDE_GUARD
 
 class $CLASS_NAME {
-public:
-    $CLASS_NAME();
-    ~$CLASS_NAME();
+	private:
 
-private:
+	public:
+		$CLASS_NAME();
+		~$CLASS_NAME();
 };
 
 #endif // $INCLUDE_GUARD
@@ -30,11 +30,9 @@ EOF
 cat <<EOF > $SOURCE_FILE
 #include "$HEADER_FILE"
 
-$CLASS_NAME::$CLASS_NAME() {
-}
+$CLASS_NAME::$CLASS_NAME() {}
 
-$CLASS_NAME::~$CLASS_NAME() {
-}
+$CLASS_NAME::~$CLASS_NAME() {}
 EOF
 
 echo "Created $HEADER_FILE and $SOURCE_FILE"
