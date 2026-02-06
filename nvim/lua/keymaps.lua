@@ -46,7 +46,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { de
 
 vim.keymap.set("n", "<leader><leader>", "/", { desc = 'Search in file' } )
 vim.keymap.set("n", "<leader>om", ":Man ", { desc = 'Open Manual' })
-vim.keymap.set("n", "<leader>pt", "<C-^>", { desc = 'Previous file' })
 vim.keymap.set("n", "<leader>ot", ":tabnew <CR>", { desc = 'Open tab' })
 
 vim.keymap.set("n", "<leader>ff", ":find *", { desc = 'File find' })
@@ -55,8 +54,6 @@ vim.keymap.set("n", "<leader>v<leader>", ":vert sfind *", { noremap = true, sile
 vim.keymap.set("n", "<leader>t<leader>", ":tabfind *", { noremap = true, silent = true })
 
 -- vim.keymap.set("n", "<leader>ct", "<cmd>!ctags -R .<CR>", { desc = "Create tag file" })
-vim.api.nvim_set_keymap('n', '<C-]>', '', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-]>', ':tag <C-R><C-W><CR>', { noremap = true, silent = true })
 
 -- Remap LSP go-to-definition to Ctrl-Alt-]
 vim.api.nvim_set_keymap('n', '<leader>gd','<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
