@@ -29,14 +29,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "*",
 	callback = function()
 		local opts = { buffer = 0, noremap = true }
-
-		-- Exit terminal mode
-		-- vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
-
-		-- Close terminal with <leader>q
-		-- vim.keymap.set("t", "<leader>q", [[<C-\><C-n>:bd!<CR>]], opts)
-		vim.keymap.set("t", "<Esc>", [[<C-\><C-n>:bd!<CR>]], opts)
-
 		-- Navigate windows from terminal
 		vim.keymap.set("t", "<leader>wh", [[<C-\><C-n><C-w>h]], opts)
 		vim.keymap.set("t", "<leader>wj", [[<C-\><C-n><C-w>j]], opts)
@@ -74,24 +66,6 @@ vim.keymap.set("n", "<leader>of", function()
   local dir = vim.fn.expand("%:p:h") .. "/*"
   vim.api.nvim_feedkeys(":e " .. dir, "n", false)
 end, { desc = "Edit file in current file's directory" })
-
--- -- Open PDF with Zathura from netrw using <leader>z
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "netrw",
---   callback = function()
---     vim.keymap.set("n", "<leader>z", function()
---       local filename = vim.fn.expand("<cfile>")
---       local dir = vim.b.netrw_curdir
---       local filepath = dir .. "/" .. filename
---
---       if filename:match("%.pdf$") then
---         vim.fn.jobstart({ "zathura", filepath }, { detach = true })
---       else
---         print("Not a PDF file")
---       end
---     end, { buffer = true, silent = true })
---   end,
--- })
 
 -- Open PDF with system default viewer (xdg-open) from netrw using <leader>z
 vim.api.nvim_create_autocmd("FileType", {

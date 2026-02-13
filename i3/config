@@ -221,4 +221,8 @@ exec --no-startup-id udiskie --tray
 
 bindsym $mod+m exec arandr
 
+# Brightness keys
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
 
