@@ -19,8 +19,8 @@ class $CLASS_NAME {
 	private:
 
 	public:
-		$CLASS_NAME();
-		~$CLASS_NAME();
+		$CLASS_NAME(void);
+		~$CLASS_NAME(void);
 };
 
 #endif // $INCLUDE_GUARD
