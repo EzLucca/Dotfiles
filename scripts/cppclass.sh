@@ -20,6 +20,8 @@ class $CLASS_NAME {
 
 	public:
 		$CLASS_NAME(void);
+		$CLASS_NAME(const $CLASS_NAME &other);
+		$CLASS_NAME &operator=(const $CLASS_NAME &other);
 		~$CLASS_NAME(void);
 };
 
@@ -31,7 +33,8 @@ cat <<EOF > $SOURCE_FILE
 #include "$HEADER_FILE"
 
 $CLASS_NAME::$CLASS_NAME() {}
-
+$CLASS_NAME::$CLASS_NAME(const $CLASS_NAME &other) {}
+$CLASS_NAME &$CLASS_NAME::operator=(const $CLASS_NAME &other) {}
 $CLASS_NAME::~$CLASS_NAME() {}
 EOF
 
