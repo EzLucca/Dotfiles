@@ -32,9 +32,37 @@ EOF
 cat <<EOF > $SOURCE_FILE
 #include "$HEADER_FILE"
 
+/**
+ * @brief Default constructor.
+ *
+ * Initializes the $CLASS_NAME with a default type.
+ */
 $CLASS_NAME::$CLASS_NAME() {}
+
+/**
+ * @brief Copy constructor.
+ *
+ * Creates a new $CLASS_NAME by copying another one.
+ *
+ * @param other The $CLASS_NAME object to copy from.
+ */
 $CLASS_NAME::$CLASS_NAME(const $CLASS_NAME &other) {}
+
+/**
+ * @brief Copy assignment operator.
+ *
+ * Assigns the values of another $CLASS_NAME to this instance.
+ *
+ * @param other The $CLASS_NAME object to assign from.
+ * @return Reference to the assigned $CLASS_NAME.
+ */
 $CLASS_NAME &$CLASS_NAME::operator=(const $CLASS_NAME &other) {}
+
+/**
+ * @brief Destructor.
+ *
+ * Called when the $CLASS_NAME object is destroyed.
+ */
 $CLASS_NAME::~$CLASS_NAME() {}
 EOF
 
