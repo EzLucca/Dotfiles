@@ -22,3 +22,16 @@ require("personal")
 require("lsp-config")
 vim.cmd("colorscheme mytheme")
 
+-- Remove background, color only the text
+vim.api.nvim_set_hl(0, "Search", {
+  fg = "#ff8800",   -- text color
+  bg = "NONE",      -- no background
+  bold = true
+})
+
+vim.api.nvim_set_hl(0, "IncSearch", {
+  fg = "#ff0000",
+  bg = "NONE",
+  bold = true
+})
+
