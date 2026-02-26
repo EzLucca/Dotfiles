@@ -10,19 +10,18 @@ vim.keymap.set('n', '<A-Left>', function()
 end, { noremap = true, silent = true })
 
 -- Terminal
-vim.keymap.set("n", "<leader>ob", function()
-	local file_dir = vim.fn.expand('%:p:h') -- Get the directory of the current file
-	local cmd = string.format("gnome-terminal --working-directory='%s' -- bash &", file_dir)
-	vim.fn.jobstart(cmd, { detach = true }) -- Run it without blocking Neovim
-end, { desc = "Open bash" })
-
 vim.keymap.set("n", "<leader>ox", function()
-	local file_dir = vim.fn.expand('%:p:h') -- Get the current file's directory
-	local cmd = string.format(
-		"xterm -fa 'Monospace' -fs 12 -e 'cd \"%s\" && exec bash' &",
-		file_dir
-	)
-	vim.fn.jobstart(cmd, { detach = true }) -- Run it asynchronously
+	local file_dir = vim.fn.expand('%:p:h')
+
+	vim.fn.jobstart({
+		"xterm",
+		"-geometry", "80x9999+0+0",
+		"-bg", "#262626",
+		"-fg", "#ffffff",
+		"-fa", "Monospace",
+		"-fs", "12",
+		"-e", "bash", "-c", "cd '" .. file_dir .. "' && exec bash"
+	}, { detach = true })
 end, { desc = "Open xterm" })
 
 vim.api.nvim_create_autocmd("TermOpen", {
