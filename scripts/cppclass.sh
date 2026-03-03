@@ -37,7 +37,7 @@ cat <<EOF > $SOURCE_FILE
  *
  * Initializes the $CLASS_NAME with a default type.
  */
-$CLASS_NAME::$CLASS_NAME() {}
+$CLASS_NAME::$CLASS_NAME(void) {}
 
 /**
  * @brief Copy constructor.
@@ -63,7 +63,7 @@ $CLASS_NAME &$CLASS_NAME::operator=(const $CLASS_NAME &other) {}
  *
  * Called when the $CLASS_NAME object is destroyed.
  */
-$CLASS_NAME::~$CLASS_NAME() {}
+$CLASS_NAME::~$CLASS_NAME(void) {}
 EOF
 
 echo "Created $HEADER_FILE and $SOURCE_FILE"
