@@ -9,20 +9,30 @@ vim.keymap.set('n', '<A-Left>', function()
 	vim.cmd('vertical resize -2')
 end, { noremap = true, silent = true })
 
--- Terminal
+-- Open default terminal
 vim.keymap.set("n", "<leader>ox", function()
-	local file_dir = vim.fn.expand('%:p:h')
+  local file_dir = vim.fn.expand('%:p:h')
+  local term = vim.fn.getenv("TERM") or "xterm"  -- fallback if not set
 
-	vim.fn.jobstart({
-		"xterm",
-		"-geometry", "80x9999+0+0",
-		"-bg", "#262626",
-		"-fg", "#ffffff",
-		"-fa", "Monospace",
-		"-fs", "12",
-		"-e", "bash", "-c", "cd '" .. file_dir .. "' && exec bash"
-	}, { detach = true })
-end, { desc = "Open xterm" })
+  local cmd = "cd " .. vim.fn.shellescape(file_dir) .. " && exec $SHELL"
+
+  vim.fn.jobstart({ term, "-e", "bash", "-c", cmd }, { detach = true })
+end, { desc = "Open terminal from $TERMINAL" })
+
+-- Terminal
+-- vim.keymap.set("n", "<leader>ox", function()
+-- 	local file_dir = vim.fn.expand('%:p:h')
+--
+-- 	vim.fn.jobstart({
+-- 		"xterm",
+-- 		"-geometry", "80x9999+0+0",
+-- 		"-bg", "#262626",
+-- 		"-fg", "#ffffff",
+-- 		"-fa", "Monospace",
+-- 		"-fs", "12",
+-- 		"-e", "bash", "-c", "cd '" .. file_dir .. "' && exec bash"
+-- 	}, { detach = true })
+-- end, { desc = "Open xterm" })
 
 vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "*",
