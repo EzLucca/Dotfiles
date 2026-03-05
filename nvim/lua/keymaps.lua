@@ -24,9 +24,6 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
-vim.keymap.set("n", "<leader>ov", ":vert term <CR>", { desc = 'Open vertical term' })
-vim.keymap.set("n", "<leader>os", ":10sp | term <CR>", { desc = 'Open horizontal term' })
-
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
@@ -47,6 +44,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { de
 vim.keymap.set("n", "<leader><leader>", "/", { desc = 'Search in file' } )
 vim.keymap.set("n", "<leader>om", ":Man ", { desc = 'Open Manual' })
 vim.keymap.set("n", "<leader>ot", ":tabnew <CR>", { desc = 'Open tab' })
+vim.keymap.set("n", "<leader>6", "<C-^>", { desc = 'Previous tab' })
 
 vim.keymap.set("n", "<leader>ff", ":find *", { desc = 'File find' })
 vim.keymap.set("n", "<leader>s<leader>", ":sfind *", { noremap = true, silent = true })
