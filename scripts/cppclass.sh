@@ -6,8 +6,15 @@ if [ $# -ne 1 ]; then
 fi
 
 CLASS_NAME=$1
-HEADER_FILE="${CLASS_NAME}.hpp"
-SOURCE_FILE="${CLASS_NAME}.cpp"
+INCLUDE_DIR="include"
+SRC_DIR="src"
+
+# Create folders if they don't exist
+mkdir -p "$INCLUDE_DIR"
+mkdir -p "$SRC_DIR"
+
+HEADER_FILE="${INCLUDE_DIR}/${CLASS_NAME}.hpp"
+SOURCE_FILE="${SRC_DIR}/${CLASS_NAME}.cpp"
 INCLUDE_GUARD=$(echo "${CLASS_NAME}_HPP" | tr '[:lower:]' '[:upper:]')
 
 # Create header file
