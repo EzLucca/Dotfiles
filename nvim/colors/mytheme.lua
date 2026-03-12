@@ -4,7 +4,7 @@ local M = {}
 -- Define your color palette
 
 local colors = {
-	bg       = "#262626",  -- Grey15
+	bg       = "#1e1e1e",  -- Grey15
 	fg       = "#afafaf",  -- Grey69
 	red      = "#f7768e",  -- Rosy red
 	green    = "#5f875f",  -- Lime green
