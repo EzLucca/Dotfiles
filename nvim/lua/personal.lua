@@ -75,21 +75,3 @@ vim.keymap.set("n", "<leader>of", function()
 	local dir = vim.fn.expand("%:p:h") .. "/*"
 	vim.api.nvim_feedkeys(":e " .. dir, "n", false)
 end, { desc = "Edit file in current file's directory" })
-
--- Open PDF with system default viewer (xdg-open) from netrw using <leader>z
--- vim.api.nvim_create_autocmd("FileType", {
--- 	pattern = "netrw",
--- 	callback = function()
--- 		vim.keymap.set("n", "<leader>zo", function()
--- 			local filename = vim.fn.expand("<cfile>")
--- 			local dir = vim.b.netrw_curdir
--- 			local filepath = dir .. "/" .. filename
---
--- 			if filename:match("%.pdf$") then
--- 				vim.fn.jobstart({ "xdg-open", filepath }, { detach = true })
--- 			else
--- 				print("Not a PDF file")
--- 			end
--- 		end, { desc = "open pdf" }, { buffer = true, silent = true })
--- 	end,
--- })
