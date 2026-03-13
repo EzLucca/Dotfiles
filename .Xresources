@@ -1,0 +1,44 @@
+! === Xterm Basic Settings ===
+XTerm*faceName: Fira Code 
+XTerm*faceSize: 12
+XTerm*loginShell: true
+XTerm*scrollBar: false
+XTerm*saveLines: 10000
+XTerm*internalBorder: 0
+XTerm*borderWidth: 0
+
+! === Dark Background / Light Text ===
+XTerm*background: #1e1e1e
+XTerm*foreground: #dcdcdc
+XTerm*cursorColor:  #af5f00
+
+! === Color Scheme (Monokai-inspired) ===
+XTerm*color0:  #1e1e1e
+XTerm*color1:  #f44747
+XTerm*color2:  #619955
+XTerm*color3:  #ffaf00
+XTerm*color4:  #0a7aca
+XTerm*color5:  #b267e6
+XTerm*color6:  #5ccfe6
+XTerm*color7:  #dcdcdc
+XTerm*color8:  #5a5a5a
+XTerm*color9:  #f44747
+XTerm*color10: #619955
+XTerm*color11: #ffaf00
+XTerm*color12: #0a7aca
+XTerm*color13: #b267e6
+XTerm*color14: #5ccfe6
+XTerm*color15: #ffffff
+
+! === Enable UTF-8 ===
+XTerm*utf8: 2
+XTerm*locale: true
+
+XTerm*rightscrollBar: false
+XTerm*scrollTtyOutput: false
+XTerm*scrollKey: false
+
+! === Clipboard (Copy/Paste Behavior) ===
+XTerm.vt100.translations: #override \
+	Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD)

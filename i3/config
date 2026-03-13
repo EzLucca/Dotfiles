@@ -51,8 +51,8 @@ tiling_drag modifier titlebar
 
 # start a terminal
 # bindsym $mod+Return exec alacritty 
-# bindsym $mod+Return exec xterm
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec xterm
+# bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -204,13 +204,18 @@ bar {
     }
 }
 
-# for_window [class=".*"] border none
+default_border none
+default_floating_border none
+for_window [class=".*"] border none
+gaps inner 0
+gaps outer 0
+hide_edge_borders both
 
 # Window border colors (corrected)
-client.focused          #5f875f #5f875f #ffffff #5f875f #5f875f
-client.focused_inactive #333333 #afafaf #ffffff #5f875f #5f875f 
-client.urgent           #2f343a #900000 #ffffff #5f875f #5f875f
-client.unfocused        #222222 #222222 #888888 #5f875f #5f875f
+# client.focused          #5f875f #5f875f #ffffff #5f875f #5f875f
+# client.focused_inactive #333333 #afafaf #ffffff #5f875f #5f875f 
+# client.urgent           #2f343a #900000 #ffffff #5f875f #5f875f
+# client.unfocused        #222222 #222222 #888888 #5f875f #5f875f
 
 # # Increase Brightness
 # bindsym XF86MonBrightnessUp exec xbacklight -inc 10
