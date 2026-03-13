@@ -9,21 +9,6 @@ vim.keymap.set('n', '<A-Left>', function()
 	vim.cmd('vertical resize -2')
 end, { noremap = true, silent = true })
 
--- Terminal
-vim.keymap.set("n", "<leader>ox", function()
-	local file_dir = vim.fn.expand('%:p:h')
-
-	vim.fn.jobstart({
-		"xterm",
-		"-geometry", "80x9999+0+0",
-		"-bg", "#262626",
-		"-fg", "#ffffff",
-		"-fa", "Monospace",
-		"-fs", "12",
-		"-e", "bash", "-c", "cd '" .. file_dir .. "' && exec bash"
-	}, { detach = true })
-end, { desc = "Open xterm" })
-
 vim.keymap.set("n", "<leader>ov", function()
   vim.cmd("lcd %:p:h")
   vim.cmd("vert term")
@@ -75,3 +60,5 @@ vim.keymap.set("n", "<leader>of", function()
 	local dir = vim.fn.expand("%:p:h") .. "/*"
 	vim.api.nvim_feedkeys(":e " .. dir, "n", false)
 end, { desc = "Edit file in current file's directory" })
+
+vim.keymap.set("n", "<leader>ox", function() require("themes").open_xterm() end, { desc = "Open themed xterm" })

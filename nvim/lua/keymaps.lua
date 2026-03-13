@@ -56,3 +56,11 @@ vim.keymap.set("n", "<leader>t<leader>", ":tabfind *", { noremap = true, silent 
 -- Remap LSP go-to-definition to Ctrl-Alt-]
 vim.api.nvim_set_keymap('n', '<leader>gd','<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 
+local themes = require("themes")
+
+-- Switch to a specific theme
+vim.keymap.set("n", "<leader>tm", function() themes.set_theme("mytheme") end, { desc = "Set MyTheme" })
+vim.keymap.set("n", "<leader>tn", function() themes.set_theme("nord") end, { desc = "Set Nord Theme" })
+
+-- Cycle through themes
+vim.keymap.set("n", "<leader>tc", function() themes.cycle_theme() end, { desc = "Cycle Themes" })
