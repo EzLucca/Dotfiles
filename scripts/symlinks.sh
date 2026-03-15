@@ -11,7 +11,6 @@ DOTFILES[".tmux.conf"]="$DOTFILES_DIR/.tmux.conf"
 DOTFILES[".config/nvim"]="$DOTFILES_DIR/nvim"
 DOTFILES[".config/i3"]="$DOTFILES_DIR/i3"
 DOTFILES[".config/i3status"]="$DOTFILES_DIR/i3status"
-DOTFILES[".config/kitty"]="$DOTFILES_DIR/kitty"
 
 # Backup directory for existing files/folders
 BACKUP_DIR="$HOME/dotfiles_backup_$(date +%Y%m%d%H%M%S)"
