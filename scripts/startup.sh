@@ -3,9 +3,10 @@
 ### --- Terminal check ---
 if command -v foot >/dev/null; then
 	program1="foot -e ./tmux_sessionizer.sh"
+elif command -v xterm >/dev/null; then
+	program1="xterm -geometry 80x9999+0+0 -e bash"
 elif command -v gnome-terminal >/dev/null; then
-	# program1="gnome-terminal -- bash"
-	program1="xterm -geometry 80x9999+0+0 -bg "#1e1e1e" -fg "#ffffff" -fa "Monospace" -fs 12 -e bash -ic 'cd "$HOME" && exec bash'"
+	program1="gnome-terminal -- bash"
 else
 	echo "❌ Neither foot nor gnome-terminal found."
 	exit 1

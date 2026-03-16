@@ -1,11 +1,15 @@
 ! === Xterm Basic Settings ===
-XTerm*faceName: Fira Code 
+XTerm*faceName: xft:Fira Code 
 XTerm*faceSize: 12
 XTerm*loginShell: true
 XTerm*scrollBar: false
 XTerm*saveLines: 10000
 XTerm*internalBorder: 0
 XTerm*borderWidth: 0
+
+XTerm*termName: xterm-256color
+XTerm*allowBoldFonts: false
+XTerm*boldMode: false
 
 ! === Dark Background / Light Text ===
 XTerm*background: #1e1e1e
@@ -37,8 +41,10 @@ XTerm*locale: true
 XTerm*rightscrollBar: false
 XTerm*scrollTtyOutput: false
 XTerm*scrollKey: false
+XTerm*jumpScroll: true
+XTerm*fastScroll: true
 
 ! === Clipboard (Copy/Paste Behavior) ===
-XTerm.vt100.translations: #override \
-	Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+XTerm*VT100.Translations: #override \
+    Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
     Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
