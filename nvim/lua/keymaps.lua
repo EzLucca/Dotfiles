@@ -64,3 +64,11 @@ vim.keymap.set("n", "<leader>tn", function() themes.set_theme("nord") end, { des
 
 -- Cycle through themes
 vim.keymap.set("n", "<leader>tc", function() themes.cycle_theme() end, { desc = "Cycle Themes" })
+
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    pattern = "*.tpp",
+    command = "setfiletype cpp"
+})
+
+vim.opt.syntax = "on"
+vim.cmd [[filetype plugin indent on]]

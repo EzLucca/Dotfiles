@@ -84,4 +84,3 @@ vim.keymap.set("n", "<leader>sl", function()
     vim.notify("No saved session found.", vim.log.levels.WARN)
   end
 end, { desc = "Load session" })
-
