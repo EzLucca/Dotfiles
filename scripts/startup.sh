@@ -12,15 +12,15 @@ else
 	exit 1
 fi
 
-### --- Brave check ---
-if command -v flatpak >/dev/null && flatpak info com.brave.Browser >/dev/null 2>&1; then
-	program2="flatpak run com.brave.Browser"
+### --- Firefox check ---
+	if command -v flatpak >/dev/null && flatpak info org.mozilla.firefox >/dev/null 2>&1; then
+	program2="flatpak run org.mozilla.firefox"
 elif command -v brave >/dev/null; then
-	program2="brave"
+	program2="firefox"
 elif [ -x /bin/brave ]; then
-	program2="/bin/brave"
+	program2="/bin/firefox"
 else
-	echo "❌ Brave not found."
+	echo "❌ Firefox not found."
 	exit 1
 fi
 

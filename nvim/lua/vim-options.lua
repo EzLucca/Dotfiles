@@ -84,3 +84,6 @@ vim.keymap.set("n", "<leader>sl", function()
     vim.notify("No saved session found.", vim.log.levels.WARN)
   end
 end, { desc = "Load session" })
+
+-- tell Markdown Preview to use flatpak Firefox
+vim.g.mkdp_browser = "/usr/bin/firefox"
