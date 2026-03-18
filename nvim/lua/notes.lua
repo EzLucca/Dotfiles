@@ -63,3 +63,10 @@ vim.keymap.set("n", "<leader>pg", function()
   vim.cmd("terminal glow -s dark " .. vim.fn.expand("%:p"))
 end, { silent = true })
 
+-- Keymap: <leader>s to start a detached Python server
+vim.api.nvim_set_keymap(
+  "n", -- normal mode
+  "<leader>ps", -- key combination
+  ":lua vim.fn.jobstart('python3 -m http.server 8000', {detach = true})<CR>",
+  { noremap = true, silent = true }
+)
