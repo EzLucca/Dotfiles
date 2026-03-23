@@ -54,6 +54,9 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec xterm
 # bindsym $mod+Return exec kitty
 
+#open browser
+bindsym $mod+b exec firefox
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
