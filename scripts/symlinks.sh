@@ -7,6 +7,7 @@ DOTFILES_DIR="$HOME/Documents/dotfiles"
 declare -A DOTFILES
 DOTFILES[".bashrc"]="$DOTFILES_DIR/.bashrc"
 DOTFILES[".Xresources"]="$DOTFILES_DIR/.Xresources"
+DOTFILES[".wezterm.lua"]="$DOTFILES_DIR/.wezterm.lua"
 DOTFILES[".tmux.conf"]="$DOTFILES_DIR/.tmux.conf"
 DOTFILES[".config/nvim"]="$DOTFILES_DIR/nvim"
 DOTFILES[".config/i3"]="$DOTFILES_DIR/i3"
@@ -39,4 +40,3 @@ for target in "${!DOTFILES[@]}"; do
 done
 
 echo "All dotfiles linked successfully!"
-
