@@ -32,6 +32,21 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.swapfile = false
 
+-- =========================
+-- 🌿 General UI for writing
+-- =========================
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.showbreak = "↪ "
+vim.opt.cursorline = true
+
+-- =========================
+-- ✨ Markdown appearance
+-- =========================
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "nc"
+
 vim.opt.fillchars = {
 	-- vert = '│', -- single line for vertical splits
 	vert = ' ',      -- No character for vertical splits

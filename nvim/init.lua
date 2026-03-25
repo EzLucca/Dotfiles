@@ -37,3 +37,11 @@ vim.api.nvim_set_hl(0, "IncSearch", {
 
 local themes = require("themes")
 themes.set_theme("mytheme")
+
+vim.api.nvim_set_hl(0, "@markup.heading.1.markdown", { fg = "#fb4934", bold = true })
+vim.api.nvim_set_hl(0, "@markup.heading.2.markdown", { fg = "#b8bb26", bold = true })
+vim.api.nvim_set_hl(0, "@markup.heading.3.markdown", { fg = "#83a598", bold = true })
+vim.api.nvim_set_hl(0, "@markup.heading.4.markdown", { fg = "#d3869b", bold = true })
+vim.api.nvim_set_hl(0, "@markup.heading.5.markdown", { fg = "#fabd2f", bold = true })
+vim.api.nvim_set_hl(0, "@markup.heading.6.markdown", { fg = "#8ec07c", bold = true })
+
