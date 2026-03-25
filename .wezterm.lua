@@ -2,6 +2,7 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 
 return {
+	default_prog = { "/bin/bash", "--login" },
 	window_decorations = "NONE",
 	-- enable_tab_bar = false,
 	use_fancy_tab_bar = false,
@@ -95,6 +96,9 @@ return {
 			key = "x",
 			mods = "ALT",
 			action = act.CloseCurrentPane({ confirm = false }),
+		},
+		{
+			key = "F11", mods = "", action = act.ToggleFullScreen
 		},
 	},
 }
