@@ -56,6 +56,9 @@ return {
 		},
 	},
 
+	-- dizabling ligatures
+	harfbuzz_features = { "calt=0", "liga=0", "clig=0" },
+
 	-- === TERM compatibility ===
 	term = "xterm-256color",
 
