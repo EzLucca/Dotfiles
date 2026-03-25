@@ -14,6 +14,11 @@ return {
 		bottom = 0,
 	},
 
+	inactive_pane_hsb = {
+		saturation = 1.0,
+		brightness = 1.0,
+	},
+
 	-- === Cursor ===
 	default_cursor_style = "SteadyBlock",
 	cursor_blink_rate = 0,
@@ -33,6 +38,7 @@ return {
 		cursor_bg = "#af5f00",
 		cursor_border = "#af5f00",
 		cursor_fg = "#1e1e1e",
+		split = "#1e1e1e",
 
 		ansi = {
 			"#1e1e1e",
@@ -65,16 +71,8 @@ return {
 	-- === Clipboard + Vim-style keys ===
 	keys = {
 		-- copy / paste
-		{
-			key = "C",
-			mods = "CTRL|SHIFT",
-			action = act.CopyTo("Clipboard"),
-		},
-		{
-			key = "V",
-			mods = "CTRL|SHIFT",
-			action = act.PasteFrom("Clipboard"),
-		},
+		{ key = "C", mods = "CTRL|SHIFT", action = act.CopyTo("Clipboard"), },
+		{ key = "V", mods = "CTRL|SHIFT", action = act.PasteFrom("Clipboard"), },
 
 		-- pane navigation (vim style)
 		{ key = "h", mods = "ALT", action = act.ActivatePaneDirection("Left") },
@@ -83,25 +81,18 @@ return {
 		{ key = "l", mods = "ALT", action = act.ActivatePaneDirection("Right") },
 
 		-- splits
-		{
-			key = "-",
-			mods = "ALT",
-			action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
-		},
-		{
-			key = "\\",
-			mods = "ALT",
-			action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
-		},
+		{ key = "-", mods = "ALT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }), },
+		{ key = "|", mods = "ALT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }), },
 
 		-- close pane
-		{
-			key = "x",
-			mods = "ALT",
-			action = act.CloseCurrentPane({ confirm = false }),
-		},
-		{
-			key = "F11", mods = "", action = act.ToggleFullScreen
-		},
+		{ key = "x", mods = "ALT", action = act.CloseCurrentPane({ confirm = false }), },
+
+		-- focus mode
+		{ key = "F11", mods = "", action = act.ToggleFullScreen },
+
+		-- tabs
+		{ key = "t", mods = "ALT", action = wezterm.action.SpawnTab "CurrentPaneDomain", },
+		{ key = "l", mods = "ALT", action = wezterm.action.ActivateTabRelative(1) },
+		{ key = "h", mods = "ALT", action = wezterm.action.ActivateTabRelative(-1) },
 	},
 }
