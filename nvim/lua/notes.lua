@@ -52,7 +52,7 @@ vim.api.nvim_set_keymap(
   "<leader>pp",
   [[
 :w
-:!pandoc % -s -o %:r.html --css=~/Documents/dotfiles/scripts/github-markdown.css --metadata title="%:t"
+:!pandoc % -s -o %:r.html --css=*.css --metadata title="%:t"
 :!xdg-open %:r.html
 ]],
   { noremap = true, silent = true, expr = false }
