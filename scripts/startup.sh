@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ### --- Terminal check ---
-if command -v foot >/dev/null; then
-	program1="foot -e ./tmux_sessionizer.sh"
+if command -v wezterm >/dev/null; then
+	program1="wezterm"
 elif command -v xterm >/dev/null; then
 	program1="xterm -geometry 80x9999+0+0 -e bash"
 elif command -v gnome-terminal >/dev/null; then

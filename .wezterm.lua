@@ -82,7 +82,7 @@ return {
 
 		-- splits
 		{ key = "-", mods = "ALT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }), },
-		{ key = "|", mods = "ALT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }), },
+		{ key = "5", mods = "ALT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }), },
 
 		-- close pane
 		{ key = "x", mods = "ALT", action = act.CloseCurrentPane({ confirm = false }), },
@@ -91,8 +91,11 @@ return {
 		{ key = "F11", mods = "", action = act.ToggleFullScreen },
 
 		-- tabs
-		{ key = "t", mods = "ALT", action = wezterm.action.SpawnTab "CurrentPaneDomain", },
-		{ key = "l", mods = "ALT", action = wezterm.action.ActivateTabRelative(1) },
-		{ key = "h", mods = "ALT", action = wezterm.action.ActivateTabRelative(-1) },
+		{ key = "t", mods = "ALT|CTRL", action = wezterm.action.SpawnTab "CurrentPaneDomain", },
+		{ key = "l", mods = "ALT|CTRL", action = wezterm.action.ActivateTabRelative(1) },
+		{ key = "h", mods = "ALT|CTRL", action = wezterm.action.ActivateTabRelative(-1) },
+		-- Manage font size
+		{ key = ",", mods = "ALT", action = wezterm.action.DecreaseFontSize, },
+		{ key = ".", mods = "ALT", action = wezterm.action.IncreaseFontSize, },
 	},
 }
