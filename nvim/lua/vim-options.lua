@@ -75,12 +75,11 @@ vim.g.netrw_liststyle = 0
 vim.o.shell = "/usr/bin/bash"
 -- vim.keymap.set("n", "<leader>ox", ":!xterm -fa 'Monospace' -fs 12 -e bash<CR>", { desc = 'Open bash with font size 12' })
 
-
 -- Customize statusline (example)
 -- %f = filename, %y = filetype, %m = modified, %r = readonly
 -- %l = current line, %L = total lines, %p%% = percentage through file
-vim.o.statusline = "%f %y %m %r %= %{%v:lua.function_size_status()%} Ln %l/%L Col %c %p%% "
-
+-- vim.o.statusline = "%f %y %m %r %= %{%v:lua.function_size_status()%} Ln %l/%L Col %c %p%% "
+vim.o.statusline = "%f %y %m %r %= %{%v:lua.countdown_status()%} %{%v:lua.function_size_status()%} Ln %l/%L Col %c %p%% "
 -- Define the session path
 local session_path = vim.fn.expand("~") .. "/Documents/my_session.vim"
 

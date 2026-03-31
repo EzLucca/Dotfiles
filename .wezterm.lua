@@ -71,8 +71,10 @@ return {
 	-- === Clipboard + Vim-style keys ===
 	keys = {
 		-- copy / paste
-		{ key = "C", mods = "CTRL|SHIFT", action = act.CopyTo("Clipboard"), },
-		{ key = "V", mods = "CTRL|SHIFT", action = act.PasteFrom("Clipboard"), },
+		-- { key = "C", mods = "CTRL|SHIFT", action = act.CopyTo("Clipboard"), },
+		-- { key = "V", mods = "CTRL|SHIFT", action = act.PasteFrom("Clipboard"), },
+		{key="V", mods="CTRL|SHIFT", action=wezterm.action.PasteFrom("Clipboard")},
+		{key="C", mods="CTRL|SHIFT", action=wezterm.action.CopyTo("Clipboard")},
 
 		-- pane navigation (vim style)
 		{ key = "h", mods = "ALT", action = act.ActivatePaneDirection("Left") },
@@ -84,16 +86,13 @@ return {
 		{ key = "-", mods = "ALT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }), },
 		{ key = "5", mods = "ALT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }), },
 
-		-- close pane
-		{ key = "x", mods = "ALT", action = act.CloseCurrentPane({ confirm = false }), },
-
 		-- focus mode
 		{ key = "F11", mods = "", action = act.ToggleFullScreen },
 
 		-- tabs
-		{ key = "t", mods = "ALT|CTRL", action = wezterm.action.SpawnTab "CurrentPaneDomain", },
-		{ key = "l", mods = "ALT|CTRL", action = wezterm.action.ActivateTabRelative(1) },
-		{ key = "h", mods = "ALT|CTRL", action = wezterm.action.ActivateTabRelative(-1) },
+		{ key = "T", mods = "ALT", action = wezterm.action.SpawnTab "CurrentPaneDomain", },
+		{ key = "L", mods = "ALT", action = wezterm.action.ActivateTabRelative(1) },
+		{ key = "H", mods = "ALT", action = wezterm.action.ActivateTabRelative(-1) },
 		-- Manage font size
 		{ key = ",", mods = "ALT", action = wezterm.action.DecreaseFontSize, },
 		{ key = ".", mods = "ALT", action = wezterm.action.IncreaseFontSize, },
