@@ -40,11 +40,17 @@ create_note() {
 		echo "Note already exists: $FILE"
 			exit 0
 		}
+# Updated with normalization:
+tags_line=""
+for t in "$@"; do
+    tag=$(echo "$t" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
+    tags_line+="[#${t^}](tags/$tag.md) "
+done
 
 cat > "$FILE" <<EOF
 id: $ID  
 last update: $DATE_UPDATE  
-tags: $(for t in $TAGS; do printf "[#%s](tags/%s.md) " "$t" "$t"; done)
+tags: $tags_line
 
 # TITLE: $NAME
 
@@ -73,6 +79,7 @@ update_tags() {
                | sed -n 's/\[#\([a-zA-Z0-9_-]\+\)\](tags\/[a-zA-Z0-9_-]\+\.md)/\1/p')
 
         for tag in $TAGS; do
+			tag_normalized=$(echo "$tag" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
             tagfile="$TAGS_DIR/$tag.md"
 
             if [[ ! -f "$tagfile" ]]; then
@@ -84,7 +91,7 @@ EOF
             fi
 
             grep -q "\[$ID\]" "$tagfile" || \
-                echo "- [$ID]($FILENAME)" >> "$tagfile"
+                echo "- [$FILENAME]($FILENAME)" >> "$tagfile"
         done
     done
 

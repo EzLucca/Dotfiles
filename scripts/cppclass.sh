@@ -19,8 +19,7 @@ INCLUDE_GUARD=$(echo "${CLASS_NAME}_HPP" | tr '[:lower:]' '[:upper:]')
 
 # Create header file
 cat <<EOF > $HEADER_FILE
-#ifndef $INCLUDE_GUARD
-#define $INCLUDE_GUARD
+#pragma once
 
 class $CLASS_NAME {
 	private:
@@ -31,8 +30,6 @@ class $CLASS_NAME {
 		$CLASS_NAME &operator=(const $CLASS_NAME &other);
 		~$CLASS_NAME(void);
 };
-
-#endif // $INCLUDE_GUARD
 EOF
 
 # Create source file
