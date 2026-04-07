@@ -19,6 +19,7 @@ set laststatus=2
 set title
 set showcmd
 set background=dark
+"set termguicolors
 set showmatch                   " shows matching part of bracket pairs (), [], {}
 "set autochdir 					" Update the dir everytime change files
 
@@ -114,7 +115,7 @@ augroup MyCustomHighlights
 augroup END
 
 function! s:MyHighlights()
-    execute 'highlight Normal       ctermfg=248 ctermbg=235'
+    execute 'highlight Normal       ctermfg=248 ctermbg=234'
     execute 'highlight LineNr       ctermfg=240'
     execute 'highlight Constant     ctermfg=75  ctermbg=235'
     execute 'highlight Comment      ctermfg=240 gui=italic'
@@ -137,4 +138,3 @@ endfunction
 
 " Trigger once on startup manually
 call s:MyHighlights()
-
