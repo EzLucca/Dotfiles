@@ -102,6 +102,7 @@ tmap <Esc> <C-\><C-n> " Escape terminal input mode using Esc key
 " Yank to system clipboard
 vnoremap <leader>y "+y
 nnoremap <leader>y "+y
+vnoremap <leader>u y:call system('xclip -selection clipboard', @")<CR>:echo "Copied to clipboard"<CR>
 
 " Paste from system clipboard
 nnoremap <leader>p "+p
@@ -121,6 +122,7 @@ function! s:MyHighlights()
     execute 'highlight Comment      ctermfg=240 gui=italic'
     execute 'highlight Error        ctermfg=210 gui=bold'
     execute 'highlight Function     ctermfg=96'
+    execute 'highlight vimIsCommand		ctermfg=56'
     execute 'highlight Type         ctermfg=65'
     execute 'highlight Special      ctermfg=65'
     execute 'highlight Identifier   ctermfg=138'
