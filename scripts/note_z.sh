@@ -2,7 +2,7 @@
 
 set -e
 
-NOTES_DIR="$HOME/Documents/Notes"
+NOTES_DIR="$HOME/Documents/MySetup/Notes"
 TAGS_DIR="$NOTES_DIR/tags"
 
 mkdir -p "$NOTES_DIR" "$TAGS_DIR"

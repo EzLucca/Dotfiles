@@ -5,7 +5,7 @@ set -e
 DATE_HUMAN="$(date +'%d-%m-%Y')"
 DATE_FILE="$(date +'%m-%d')"
 
-NOTES_DIR="$HOME/Documents/Notes"
+NOTES_DIR="$HOME/Documents/MySetup/Notes"
 FILEPATH="$NOTES_DIR/note-$DATE_FILE.md"
 
 mkdir -p "$NOTES_DIR"

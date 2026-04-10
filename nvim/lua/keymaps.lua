@@ -1,7 +1,7 @@
 
 vim.g.mapleader = " "
 
-vim.keymap.set('n', '<leader>ec', ':tabnew | Ex ~/Documents/dotfiles/nvim<CR>', { desc = 'Edit nvim config' })
+vim.keymap.set('n', '<leader>ec', ':tabnew | Ex ~/Documents/MySetup/dotfiles/nvim<CR>', { desc = 'Edit nvim config' })
 
 vim.keymap.set("n", "<leader>fe", vim.cmd.Ex, { desc = 'File explorer' })
 vim.keymap.set("n", "<leader>fs", vim.cmd.w, { desc = 'File Save' })

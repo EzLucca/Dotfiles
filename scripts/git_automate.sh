@@ -1,8 +1,8 @@
 #!/bin/bash
 
 FOLDERS=(
-    "$HOME/Documents/Notes"
-    "$HOME/Documents/dotfiles"
+    "$HOME/Documents/MySetup/Notes"
+    "$HOME/Documents/MySetup/dotfiles"
 )
 
 for folder in "${FOLDERS[@]}"; do

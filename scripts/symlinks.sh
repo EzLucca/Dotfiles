@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Directory where your dotfiles are stored
-DOTFILES_DIR="$HOME/Documents/dotfiles"
+DOTFILES_DIR="$HOME/Documents/MySetup/dotfiles"
 
 # List of files/folders to symlink
 declare -A DOTFILES

@@ -63,7 +63,7 @@ nnoremap <leader>fe :Ex<CR>
 inoremap jk <ESC>
 
 nnoremap <leader>rr :source ~/.vimrc<CR>
-nnoremap <leader>sr :e ~/.vimrc<CR>
+nnoremap <leader>sr :e $MYVIMRC<CR>
 nnoremap <leader>if mzgg=G`z
 nnoremap <leader><leader> /
 

@@ -54,7 +54,7 @@ alias DEFCON1='valgrind --leak-check=full --track-origins=yes'
 alias DEFCON2='valgrind --leak-check=full --show-leak-kinds=all'
 alias DEFCON3='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --errors-for-leak-kinds=definite'
 
-alias upgit='~/Documents/dotfiles/scripts/git_automate.sh'
+alias upgit='~/Documents/MySetup/dotfiles/scripts/git_automate.sh'
 # alias grademe='bash -c "$(curl https://grademe.fr)"'
 
 # Enable bash completion
