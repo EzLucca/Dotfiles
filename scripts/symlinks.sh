@@ -6,7 +6,7 @@ DOTFILES_DIR="$HOME/Documents/MySetup/dotfiles"
 # List of files/folders to symlink
 declare -A DOTFILES
 DOTFILES[".bashrc"]="$DOTFILES_DIR/.bashrc"
-DOTFILES["./vimrc"]="$DOTFILES_DIR/.vimrc"
+DOTFILES[".vimrc"]="$DOTFILES_DIR/.vimrc"
 DOTFILES[".Xresources"]="$DOTFILES_DIR/.Xresources"
 DOTFILES[".wezterm.lua"]="$DOTFILES_DIR/.wezterm.lua"
 DOTFILES[".tmux.conf"]="$DOTFILES_DIR/.tmux.conf"
