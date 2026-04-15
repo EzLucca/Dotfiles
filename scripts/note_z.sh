@@ -46,7 +46,13 @@ for t in "$@"; do
     tag=$(echo "$t" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
     tags_line+="[#${t^}](tags/$tag.md) "
 done
-
+# for t in "$@"; do
+#     clean=$(echo "$t" | xargs)  # trims whitespace
+#     tag=$(echo "$clean" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
+#     label="${clean^}"
+#
+#     tags_line+="[#${label}](tags/$tag.md) "
+# done
 cat > "$FILE" <<EOF
 id: $ID  
 last update: $DATE_UPDATE  
