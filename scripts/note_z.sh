@@ -9,9 +9,29 @@ mkdir -p "$NOTES_DIR" "$TAGS_DIR"
 
 usage() {
 	echo "Usage:"
-	echo "  notes.sh new \"Title\" [tag1 tag2 ...]"
-	echo "  notes.sh tags"
+	echo "  notes.sh \"Title\" [tag1 tag2 ...]"
+	echo "  notes.sh --tags"
 	exit 1
+}
+
+# --------------------------------------------------------------
+# HELPERS
+# --------------------------------------------------------------
+normalize_tag() {
+	echo "$1" \
+		| tr '[:upper:]' '[:lower:]' \
+		| sed 's/[^a-z0-9]/-/g'
+}
+
+format_tag_label() {
+	# Capitalize first letter only
+	echo "${1^}"
+}
+
+slugify() {
+	echo "$1" \
+		| tr '[:upper:]' '[:lower:]' \
+		| sed 's/[^a-z0-9 ]//g; s/ \+/-/g'
 }
 
 # --------------------------------------------------------------
@@ -20,7 +40,6 @@ usage() {
 create_note() {
 	NAME="$1"
 	shift
-	TAGS="$*"
 
 	if [[ -z "$NAME" ]]; then
 		echo "No note title provided" >&2
@@ -29,31 +48,24 @@ create_note() {
 
 	ID="$(date +'%Y%m%d%H%M')"
 	DATE_UPDATE="$(date +'%Y-%m-%d-%H-%M')"
-
-	SLUG=$(echo "$NAME" \
-		| tr '[:upper:]' '[:lower:]' \
-		| sed 's/[^a-z0-9 ]//g; s/ \+/-/g')
+	SLUG=$(slugify "$NAME")
 
 	FILE="$NOTES_DIR/$ID-$SLUG.md"
 
-	[[ -f "$FILE" ]] && {
+	if [[ -f "$FILE" ]]; then
 		echo "Note already exists: $FILE"
-			exit 0
-		}
-# Updated with normalization:
-tags_line=""
-for t in "$@"; do
-    tag=$(echo "$t" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
-    tags_line+="[#${t^}](tags/$tag.md) "
-done
-# for t in "$@"; do
-#     clean=$(echo "$t" | xargs)  # trims whitespace
-#     tag=$(echo "$clean" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
-#     label="${clean^}"
-#
-#     tags_line+="[#${label}](tags/$tag.md) "
-# done
-cat > "$FILE" <<EOF
+		exit 0
+	fi
+
+	# Build tags line
+	tags_line=""
+	for t in "$@"; do
+		tag_norm=$(normalize_tag "$t")
+		tag_label=$(format_tag_label "$t")
+		tags_line+="[#${tag_label}](tags/${tag_norm}.md) "
+	done
+
+	cat > "$FILE" <<EOF
 id: $ID  
 last update: $DATE_UPDATE  
 tags: $tags_line
@@ -62,70 +74,64 @@ tags: $tags_line
 
 EOF
 
-echo "Created: $FILE"
+	echo "Created: $FILE"
 }
 
 # --------------------------------------------------------------
 # UPDATE TAG INDEX
 # --------------------------------------------------------------
 update_tags() {
-    mkdir -p "$TAGS_DIR"
-    rm -f "$TAGS_DIR"/*.md
+	mkdir -p "$TAGS_DIR"
+	rm -f "$TAGS_DIR"/*.md
 
-    for file in "$NOTES_DIR"/*.md; do
-        [[ ! -f "$file" ]] && continue
+	for file in "$NOTES_DIR"/*.md; do
+		[[ ! -f "$file" ]] && continue
 
-        ID=$(grep "^id:" "$file" | awk '{print $2}')
-        FILENAME=$(basename "$file")
+		ID=$(grep "^id:" "$file" | awk '{print $2}')
+		FILENAME=$(basename "$file")
 
-        # Extract all inline tags on the 'tags:' line
-        TAGS=$(grep "^tags:" "$file" \
-               | sed -e 's/tags: //' \
-               | tr ' ' '\n' \
-               | sed -n 's/\[#\([a-zA-Z0-9_-]\+\)\](tags\/[a-zA-Z0-9_-]\+\.md)/\1/p')
+		# Extract tag labels from markdown links
+		TAGS=$(grep "^tags:" "$file" \
+			| sed -e 's/tags: //' \
+			| tr ' ' '\n' \
+			| sed -n 's/\[#\([a-zA-Z0-9_-]\+\)\](tags\/[a-zA-Z0-9_-]\+\.md)/\1/p')
 
-        for tag in $TAGS; do
-			tag_normalized=$(echo "$tag" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
-            tagfile="$TAGS_DIR/$tag.md"
+		for tag in $TAGS; do
+			tag_norm=$(normalize_tag "$tag")
+			tag_label=$(format_tag_label "$tag")
+			tagfile="$TAGS_DIR/$tag_norm.md"
 
-            if [[ ! -f "$tagfile" ]]; then
-                cat > "$tagfile" <<EOF
-# ${tag^}
+			if [[ ! -f "$tagfile" ]]; then
+				cat > "$tagfile" <<EOF
+# $tag_label
 
 ## Notes
 EOF
-            fi
+			fi
 
-            grep -q "\[$ID\]" "$tagfile" || \
-                echo "- [$FILENAME]($FILENAME)" >> "$tagfile"
-        done
-    done
+			# Avoid duplicates
+			grep -q "\[$FILENAME\]" "$tagfile" || \
+				echo "- [$FILENAME]($FILENAME)" >> "$tagfile"
+		done
+	done
 
-    echo "Tag indexes updated."
+	echo "Tag indexes updated."
 }
 
-# --------------------------------------------------
+# --------------------------------------------------------------
 # COMMAND DISPATCH
-# --------------------------------------------------
+# --------------------------------------------------------------
 if [[ -z "$1" ]]; then
-    echo "Usage: bash notes.sh \"Note Title\" [tag1 tag2 ...]"
-    exit 1
+	usage
 fi
 
 if [[ "$1" == "--tags" ]]; then
-    # Only update tags, no new note
-    update_tags
-    exit 0
+	update_tags
+	exit 0
 fi
 
-# First argument is always the note title
 NOTE_TITLE="$1"
 shift
-NOTE_TAGS="$@"
 
-# Create note
-create_note "$NOTE_TITLE" $NOTE_TAGS
-
-# Automatically update tags after creating a note
+create_note "$NOTE_TITLE" "$@"
 update_tags
-
