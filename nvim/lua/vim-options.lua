@@ -38,13 +38,13 @@ vim.opt.swapfile = false
 vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
-vim.opt.showbreak = "↪ "
+-- vim.opt.showbreak = "↪ "
 vim.opt.cursorline = false
 
 -- =========================
 -- ✨ Markdown appearance
 -- =========================
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 0
 vim.opt.concealcursor = "nc"
 
 vim.opt.fillchars = {
