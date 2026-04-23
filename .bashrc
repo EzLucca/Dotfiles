@@ -70,3 +70,7 @@ export PATH="$HOME/nvim:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 export PATH=$HOME/local/node-v20.11.1-linux-x64/bin:$PATH
+
+cs() {
+	curl cheat.sh/"$1" | less -R
+}
