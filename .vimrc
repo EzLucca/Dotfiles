@@ -19,6 +19,7 @@ set laststatus=2
 set title
 set showcmd
 set background=dark
+set belloff=all
 "set termguicolors
 set showmatch                   " shows matching part of bracket pairs (), [], {}
 "set autochdir 					" Update the dir everytime change files
@@ -44,17 +45,12 @@ set shell=/usr/bin/bash\ -i
 set splitbelow
 set fillchars=vert:\ ,eob:\ 
 set t_vb=
-
 " ===================================================================== Remaps =
 
 let mapleader =  " "
 
 " Netrw config
 let g:netrw_banner = 0
-"let g:netrw_liststyle = 3
-"let g:netrw_browse_split = 0
-"let g:netrw_altv = 1
-"let g:netrw_winsize = 25
 let g:netrw_sort_sequence = '[\/]$,*,\.bak$,\.o$,\.h$,\.info$,\.swp$,\.obj$'
 
 " Toggle netrw
@@ -94,49 +90,70 @@ packadd termdebug
 nnoremap <leader>gdb :Termdebug ./a.out<CR>
 nnoremap <leader>ov :vert term <CR>
 nnoremap <leader>os :term <CR>
-"nnoremap <leader>ob :!gnome-terminal -- bash & <CR>
 nnoremap <leader>ob :!xterm -fa 'Monospace' -fs 10 -e bash &<CR>
 
 tmap <Esc> <C-\><C-n> " Escape terminal input mode using Esc key
 
 " Yank to system clipboard
-vnoremap <leader>y "+y
-nnoremap <leader>y "+y
-vnoremap <leader>u y:call system('xclip -selection clipboard', @")<CR>:echo "Copied to clipboard"<CR>
+vnoremap <leader>y y:call system('xclip -selection clipboard', @")<CR>:echo "Copied to clipboard"<CR>
 
 " Paste from system clipboard
-nnoremap <leader>p "+p
-vnoremap <leader>p "+p
+"nnoremap <leader>p "+p
+"vnoremap <leader>p "+p
 
 augroup MyCustomHighlights
-    autocmd!
-    autocmd ColorScheme * call s:MyHighlights()
-    autocmd VimEnter * call s:MyHighlights()
-    autocmd BufWinEnter * call s:MyHighlights()
+	autocmd!
+	autocmd ColorScheme * call s:MyHighlights()
+	autocmd VimEnter * call s:MyHighlights()
+	autocmd BufWinEnter * call s:MyHighlights()
 augroup END
 
 function! s:MyHighlights()
-    execute 'highlight Normal       ctermfg=248 ctermbg=234'
-    execute 'highlight LineNr       ctermfg=240'
-    execute 'highlight Constant     ctermfg=75  ctermbg=235'
-    execute 'highlight Comment      ctermfg=240 gui=italic'
-    execute 'highlight Error        ctermfg=210 gui=bold'
-    execute 'highlight Function     ctermfg=96'
-    execute 'highlight vimIsCommand		ctermfg=56'
-    execute 'highlight Type         ctermfg=65'
-    execute 'highlight Special      ctermfg=65'
-    execute 'highlight Identifier   ctermfg=138'
-    execute 'highlight Keyword      ctermfg=130 gui=bold'
-    execute 'highlight String       ctermfg=65'
-    execute 'highlight Number       ctermfg=138'
-    execute 'highlight Directory    ctermfg=96'
-    execute 'highlight VertSplit	ctermfg=235'
-    execute 'highlight Statement    ctermfg=130'
-    execute 'highlight StatusLine   ctermfg=65  ctermbg=234'
-    execute 'highlight StatusLineNC ctermfg=240  ctermbg=234'
-    execute 'highlight NormalNC     ctermfg=130 ctermbg=235'
-    execute 'highlight netrwDir     ctermfg=130'
+	execute 'highlight Normal       ctermfg=248 ctermbg=234'
+	execute 'highlight LineNr       ctermfg=240'
+	execute 'highlight Constant     ctermfg=75  ctermbg=235'
+	execute 'highlight Comment      ctermfg=240 gui=italic'
+	execute 'highlight Error        ctermfg=210 gui=bold'
+	execute 'highlight Function     ctermfg=96'
+	execute 'highlight vimIsCommand		ctermfg=56'
+	execute 'highlight Type         ctermfg=65'
+	execute 'highlight Special      ctermfg=65'
+	execute 'highlight Identifier   ctermfg=138'
+	execute 'highlight Keyword      ctermfg=130 gui=bold'
+	execute 'highlight String       ctermfg=65'
+	execute 'highlight Number       ctermfg=138'
+	execute 'highlight Directory    ctermfg=96'
+	execute 'highlight VertSplit	ctermfg=234 ctermbg=234'
+	execute 'highlight Statement    ctermfg=130'
+	execute 'highlight StatusLine   ctermfg=65  ctermbg=234'
+	execute 'highlight StatusLineNC ctermfg=240  ctermbg=234'
+	execute 'highlight NormalNC     ctermfg=130 ctermbg=235'
+	execute 'highlight netrwDir     ctermfg=130'
 endfunction
 
 " Trigger once on startup manually
 call s:MyHighlights()
+
+" =========================
+" Scratch note (vertical split)
+" =========================
+nnoremap <leader>nj :call OpenScratch()<CR>
+
+function! OpenScratch()
+	let filepath = system("~/Documents/MySetup/dotfiles/scripts/note_d.sh")
+	let filepath = trim(filepath)
+	if empty(filepath)
+		echo "Error: script returned empty path"
+		return
+	endif
+	execute "vsplit " . fnameescape(filepath)
+	execute "vertical resize 50"
+endfunction
+
+" =========================
+" Specific Notes
+" =========================
+nnoremap <leader>nu :! ~/Documents/MySetup/dotfiles/scripts/note_z.sh --tags<CR>
+nnoremap <leader>nf :tabnew<CR>:Ex ~/Documents/MySetup/Notes/<CR>
+nnoremap <leader>nn :split \| terminal ~/Documents/MySetup/dotfiles/scripts/note_z.sh<CR>i
+
