@@ -1,22 +1,13 @@
-
--- Increase window width
-vim.keymap.set('n', '<A-Right>', function()
-	vim.cmd('vertical resize +2')
-end, { noremap = true, silent = true })
-
--- Decrease window width
-vim.keymap.set('n', '<A-Left>', function()
-	vim.cmd('vertical resize -2')
-end, { noremap = true, silent = true })
+-- personal.lua ----------------------------------------------------------------
 
 vim.keymap.set("n", "<leader>ov", function()
-  vim.cmd("lcd %:p:h")
-  vim.cmd("vert term")
+	vim.cmd("lcd %:p:h")
+	vim.cmd("vert term")
 end, { desc = "Open vertical term" })
 
 vim.keymap.set("n", "<leader>os", function()
-  vim.cmd("lcd %:p:h")
-  vim.cmd("10sp | term")
+	vim.cmd("lcd %:p:h")
+	vim.cmd("10sp | term")
 end, { desc = "Open horizontal term" })
 
 vim.api.nvim_create_autocmd("TermOpen", {
@@ -32,11 +23,11 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -- Require Treesitter utils
-local ts_utils = require'nvim-treesitter.ts_utils'
 
 -- Function to calculate size of current function
 function _G.function_size_status()
-	local node = ts_utils.get_node_at_cursor()
+	local ts_utils = vim.treesitter
+	local node = ts_utils.get_node()
 	while node and node:type() ~= "function_definition" and node:type() ~= "function_declaration" do
 		node = node:parent()
 	end
@@ -47,18 +38,3 @@ function _G.function_size_status()
 	end
 	return ""  -- show nothing if not inside a function
 end
-
--- Create the tag file on current directory
-vim.keymap.set("n", "<leader>ct", function()
-	local file_dir = vim.fn.expand("%:p:h")      -- Get the directory of the current file
-	vim.cmd("lcd " .. file_dir)                  -- Change local working directory
-	vim.cmd("!ctags -R .")                       -- Run ctags in that directory
-end, { desc = "Create tag file in current file's directory" })
-
--- Search file on current folder
-vim.keymap.set("n", "<leader>of", function()
-	local dir = vim.fn.expand("%:p:h") .. "/*"
-	vim.api.nvim_feedkeys(":e " .. dir, "n", false)
-end, { desc = "Edit file in current file's directory" })
-
-vim.keymap.set("n", "<leader>ox", function() require("themes").open_xterm() end, { desc = "Open themed xterm" })

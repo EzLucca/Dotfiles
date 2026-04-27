@@ -1,3 +1,4 @@
+-- notes.lua -------------------------------------------------------------------
 
 -- Scratch
 vim.keymap.set('n', '<leader>nj', function()

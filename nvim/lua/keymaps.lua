@@ -1,3 +1,4 @@
+-- keymaps.lua -----------------------------------------------------------------
 
 vim.g.mapleader = " "
 
@@ -6,69 +7,57 @@ vim.keymap.set('n', '<leader>ec', ':tabnew | Ex ~/Documents/MySetup/dotfiles/nvi
 vim.keymap.set("n", "<leader>fe", vim.cmd.Ex, { desc = 'File explorer' })
 vim.keymap.set("n", "<leader>fs", vim.cmd.w, { desc = 'File Save' })
 vim.keymap.set("n", "<leader>fq", vim.cmd.q, { desc = 'File Quit' })
-vim.keymap.set("n", "<leader>qa", vim.cmd.qa, { desc = 'Quit All' })
+vim.keymap.set("i", "jk", "<Esc>", { desc = "Esc insert mode" })
 
-vim.keymap.set("n", "<leader>wv", "<C-w><C-v>", { desc = 'Vertical split' })
-vim.keymap.set("n", "<leader>ws", "<C-w><C-s>", { desc = 'Horizontal split' })
-vim.keymap.set("n", "<leader>wq", "<C-w><C-q>", { desc = 'Close window' })
+-- File search
+vim.keymap.set("n", "<leader>ff", ":find ", { desc = 'File find' })
+vim.keymap.set("n", "<leader>s<leader>", ":sfind ", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>v<leader>", ":vert sfind ", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>t<leader>", ":tabfind ", { noremap = true, silent = true })
 
+-- Windows management
+vim.keymap.set("n", "<leader>sv", "<C-w><C-v>", { desc = 'Vertical split' })
+vim.keymap.set("n", "<leader>sh", "<C-w><C-s>", { desc = 'Horizontal split' })
+vim.keymap.set("n", "<leader>fq", "<C-w><C-q>", { desc = 'Close window' })
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
+
+-- Windows navigation
 vim.keymap.set("n", "<leader>wl", "<C-w><C-l>", { desc = 'Move left window' })
 vim.keymap.set("n", "<leader>wh", "<C-w><C-h>", { desc = 'Move right window' })
 vim.keymap.set("n", "<leader>wj", "<C-w><C-j>", { desc = 'Move down window' })
 vim.keymap.set("n", "<leader>wk", "<C-w><C-k>", { desc = 'Move up window' })
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- Center screen when jumping
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
+vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
+vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz", { desc = "Prev quickfix" })
+vim.keymap.set("n", "<leader>j", "<cmd>lnext<CR>zz", { desc = "Next location list" })
+vim.keymap.set("n", "<leader>k", "<cmd>lprev<CR>zz", { desc = "Prev location list" })
 
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- Lines editing
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection up" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection down" })
 
--- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]])
+-- Better paste behavior
+vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = 'Copy selected to clipboard' })
-vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = 'Copy line to clipboard' })
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
-vim.keymap.set("i", "jk", "<Esc>")
-vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- Better indenting in visual mode
 vim.keymap.set("n", "<leader>if", "mzgg=G'z", { desc = 'Indent file' })
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
 vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = 'Substitute word' })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { desc = 'Make file executable' })
 
 vim.keymap.set("n", "<leader><leader>", "/", { desc = 'Search in file' } )
 vim.keymap.set("n", "<leader>om", ":Man ", { desc = 'Open Manual' })
-vim.keymap.set("n", "<leader>ot", ":tabnew <CR>", { desc = 'Open tab' })
-vim.keymap.set("n", "<leader>6", "<C-^>", { desc = 'Previous tab' })
 
-vim.keymap.set("n", "<leader>ff", ":find *", { desc = 'File find' })
-vim.keymap.set("n", "<leader>s<leader>", ":sfind *", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>v<leader>", ":vert sfind *", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>t<leader>", ":tabfind *", { noremap = true, silent = true })
-
--- vim.keymap.set("n", "<leader>ct", "<cmd>!ctags -R .<CR>", { desc = "Create tag file" })
-
--- Remap LSP go-to-definition to Ctrl-Alt-]
-vim.api.nvim_set_keymap('n', '<leader>gd','<Cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
-
-local themes = require("themes")
-
--- Switch to a specific theme
-vim.keymap.set("n", "<leader>tm", function() themes.set_theme("mytheme") end, { desc = "Set MyTheme" })
-vim.keymap.set("n", "<leader>tn", function() themes.set_theme("nord") end, { desc = "Set Nord Theme" })
-
--- Cycle through themes
-vim.keymap.set("n", "<leader>tc", function() themes.cycle_theme() end, { desc = "Cycle Themes" })
-
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-    pattern = "*.tpp",
-    command = "setfiletype cpp"
-})
-
-vim.opt.syntax = "on"
-vim.cmd [[filetype plugin indent on]]
+-- Tab managment
+vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { desc = 'New tab' })
+vim.keymap.set('n', '<leader>tx', ':tabclose<CR>', { desc = 'Close tab' })

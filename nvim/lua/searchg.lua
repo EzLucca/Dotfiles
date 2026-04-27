@@ -1,3 +1,4 @@
+-- searchg.lua -----------------------------------------------------------------
 
 vim.keymap.set("n", "<leader>og", function()
   local word = vim.fn.expand("<cword>")
