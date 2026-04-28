@@ -21,20 +21,3 @@ vim.api.nvim_create_autocmd("TermOpen", {
 		vim.keymap.set("t", "<leader>wl", [[<C-\><C-n><C-w>l]], opts)
 	end,
 })
-
--- Require Treesitter utils
-
--- Function to calculate size of current function
-function _G.function_size_status()
-	local ts_utils = vim.treesitter
-	local node = ts_utils.get_node()
-	while node and node:type() ~= "function_definition" and node:type() ~= "function_declaration" do
-		node = node:parent()
-	end
-	if node then
-		local start_row, _, end_row, _ = node:range()
-		local lines = end_row - start_row + 1
-		return "[Fn:" .. lines .. "L]"
-	end
-	return ""  -- show nothing if not inside a function
-end

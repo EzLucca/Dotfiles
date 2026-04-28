@@ -13,7 +13,12 @@ return {
 		{ 'j-hui/fidget.nvim', opts = {} },
 
 		-- Allows extra capabilities provided by blink.cmp
-		'saghen/blink.cmp',
+        {
+          "saghen/blink.cmp",
+          dependencies = {
+            "saghen/blink.lib",
+          },
+        }
 	},
 	config = function()
 		-- Brief aside: **What is LSP?**
@@ -65,10 +70,10 @@ return {
 				-- map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
 
 				-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
-				---@param client vim.lsp.Client
-				---@param method vim.lsp.protocol.Method
-				---@param bufnr? integer some lsp support methods only in specific files
-				---@return boolean
+				-- @param client vim.lsp.Client
+				-- @param method vim.lsp.protocol.Method
+				-- @param bufnr? integer some lsp support methods only in specific files
+				-- @return boolean
 				local function client_supports_method(client, method, bufnr)
 					if vim.fn.has 'nvim-0.11' == 1 then
 						return client:supports_method(method, bufnr)
@@ -139,9 +144,9 @@ return {
 		--  - settings (table): Override the default settings passed when initializing the server.
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 		local servers = {
-			-- clangd = {},
+			clangd = {},
 			-- gopls = {},
-			-- pyright = {},
+			pyright = {},
 			-- rust_analyzer = {},
 			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 			--
@@ -181,10 +186,17 @@ return {
 		--
 		-- You can add other tools here that you want Mason to install
 		-- for you, so that they are available from within Neovim.
-		local ensure_installed = vim.tbl_keys(servers or {})
-		vim.list_extend(ensure_installed, {
-			'stylua', -- Used to format Lua code
-		})
+		-- local ensure_installed = vim.tbl_keys(servers or {})
+		-- vim.list_extend(ensure_installed, {
+		-- 	'stylua', -- Used to format Lua code
+		-- })
+        local ensure_installed = {
+          "lua_ls",
+          "clangd",
+          "pyright",
+          "rust_analyzer",
+          "stylua",
+        }
 		require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
 		require('mason-lspconfig').setup {

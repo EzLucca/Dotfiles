@@ -97,7 +97,7 @@ vim.opt.wildmode = "longest:full,full"
 vim.opt.wildignore:append { "*/.git/*", "*/node_modules/*", "*.o", "*.obj", "*.pyc" }
 
 -- Customize statusline (example)
-vim.o.statusline = "%f %y %m %r %= %{%v:lua.function_size_status()%} Ln %l/%L Col %c %p%% "
+vim.o.statusline = "%f %y %m %r %= Ln %l/%L Col %c %p%% "
 
 -- Better diff options
 vim.opt.diffopt:append("linematch:60")
