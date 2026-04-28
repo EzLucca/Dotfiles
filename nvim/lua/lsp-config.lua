@@ -1,5 +1,8 @@
 -- lsp-config.lua --------------------------------------------------------------
 
+-- Create augroup (FIX: was missing before)
+local augroup = vim.api.nvim_create_augroup("LspConfig", { clear = true })
+
 -- LSP settings
 local function setup_lsp()
   -- Show diagnostic signs in the gutter
@@ -69,3 +72,34 @@ vim.keymap.set('n', '<leader>ql', vim.diagnostic.setloclist, { desc = 'Open diag
 vim.keymap.set('n', '<leader>dl', vim.diagnostic.open_float, { desc = 'Show line diagnostics' })
 
 setup_lsp()
+
+-- START LSP SERVERS (THIS WAS MISSING) -----------------------------------------
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup,
+  pattern = { "lua", "python", "javascript", "typescript" },
+  callback = function(args)
+    local ft = vim.bo[args.buf].filetype
+
+    local servers = {
+      lua = { "lua-language-server" },
+      python = { "pyright-langserver", "--stdio" },
+      javascript = { "typescript-language-server", "--stdio" },
+      typescript = { "typescript-language-server", "--stdio" },
+    }
+
+    local cmd = servers[ft]
+    if not cmd then return end
+
+    vim.lsp.start({
+      name = ft,
+      cmd = cmd,
+      root_dir = vim.fs.root(args.buf, {
+        ".git",
+        "package.json",
+        "pyproject.toml",
+        ".luarc.json"
+      }),
+    })
+  end,
+})

@@ -106,6 +106,10 @@ vim.opt.diffopt:append("linematch:60")
 vim.opt.redrawtime = 10000
 vim.opt.maxmempattern = 20000
 
+-- shell
+vim.o.shell = "bash"
+vim.o.shellcmdflag = "-ic"
+
 -- File types
 vim.filetype.add({
   extension = {

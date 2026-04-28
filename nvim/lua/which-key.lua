@@ -1,3 +1,5 @@
+-- Return the file to plugins folder if want to use it
+
  return { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
