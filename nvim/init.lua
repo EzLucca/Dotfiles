@@ -1,17 +1,12 @@
 -- init.lua --------------------------------------------------------------------
+require('vim._core.ui2').enable({})
 
 vim.cmd.colorscheme("retrobox")
 require("vim-options")
 require("keymaps")
---
--- require("lazy").setup("plugins")
--- require("lsp-config")
--- require("plugins")
---
+
 -- Plugins
-require("config-lazy")
 require("config-lsp")
-require("config-cmp")
 
 -- Personalized
 require("functions")

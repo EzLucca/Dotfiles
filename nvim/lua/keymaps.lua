@@ -61,3 +61,9 @@ vim.keymap.set("n", "<leader>om", ":Man ", { desc = 'Open Manual' })
 -- Tab managment
 vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { desc = 'New tab' })
 vim.keymap.set('n', '<leader>tx', ':tabclose<CR>', { desc = 'Close tab' })
+
+-- undo tree
+vim.keymap.set('n', '<leader>u', function()
+    vim.cmd.packadd("nvim.undotree")
+    require("undotree").open()
+end, { desc = 'toggle builting undotree' })

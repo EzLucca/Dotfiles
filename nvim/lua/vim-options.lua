@@ -46,6 +46,7 @@ if vim.fn.isdirectory(undodir) == 0 then
   vim.fn.mkdir(undodir, "p")
 end
 
+
 -- File handling
 vim.opt.backup = false                             -- Don't create backup files
 vim.opt.writebackup = false                        -- Don't create backup before writing
@@ -86,6 +87,8 @@ vim.opt.splitright = true                          -- Vertical splits go right
 -- Netrw config (Lua equivalent)
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 0
+vim.g.netrw_sort_by = "ext"
+vim.g.netrw_sort_direction = "normal" -- or "reverse"
 
 -- Tab display settings
 vim.opt.showtabline = 1  -- Always show tabline (0=never, 1=when multiple tabs, 2=always)
@@ -108,7 +111,7 @@ vim.opt.maxmempattern = 20000
 
 -- shell
 vim.o.shell = "bash"
-vim.o.shellcmdflag = "-ic"
+-- vim.o.shellcmdflag = "-lc"
 
 -- File types
 vim.filetype.add({
@@ -116,3 +119,6 @@ vim.filetype.add({
     tpp = "cpp",
   },
 })
+
+vim.o.grepprg = "rg --vimgrep"
+vim.o.grepformat = "%f:%l:%c:%m"
