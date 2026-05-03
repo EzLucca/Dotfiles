@@ -55,7 +55,7 @@ vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 vim.keymap.set("n", "<leader>cw", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = 'Substitute word' })
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { desc = 'Make file executable' })
 
-vim.keymap.set("n", "<leader><leader>", "/", { desc = 'Search in file' } )
+vim.keymap.set("n", "g<leader>", "/", { desc = 'Search in file' } )
 vim.keymap.set("n", "<leader>om", ":Man ", { desc = 'Open Manual' })
 
 -- Tab managment
