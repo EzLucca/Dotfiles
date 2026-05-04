@@ -11,6 +11,7 @@ vim.keymap.set("i", "jk", "<Esc>", { desc = "Esc insert mode" })
 
 -- File search
 vim.keymap.set("n", "<leader>ff", ":find ", { desc = 'File find' })
+vim.keymap.set("n", "<leader>ef", ":e ", { desc = 'Edit File' })
 vim.keymap.set("n", "<leader>s<leader>", ":sfind ", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>v<leader>", ":vert sfind ", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>t<leader>", ":tabfind ", { noremap = true, silent = true })
@@ -35,10 +36,14 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
-vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
-vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz", { desc = "Prev quickfix" })
 vim.keymap.set("n", "<leader>j", "<cmd>lnext<CR>zz", { desc = "Next location list" })
 vim.keymap.set("n", "<leader>k", "<cmd>lprev<CR>zz", { desc = "Prev location list" })
+
+-- Quickfix
+vim.keymap.set("n", "<leader>co", ":copen<CR>", { desc = "Open quickfix" })
+vim.keymap.set("n", "<leader>cc", ":cclose<CR>", { desc = "Close quickfix" })
+vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
+vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz", { desc = "Prev quickfix" })
 
 -- Lines editing
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection up" })
