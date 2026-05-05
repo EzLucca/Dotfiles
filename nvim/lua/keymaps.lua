@@ -53,7 +53,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 
 -- Better indenting in visual mode
-vim.keymap.set("n", "<leader>if", "mzgg=G'z", { desc = 'Indent file' })
+vim.keymap.set("n", "<leader>if", "mzgg=G'zzz", { desc = 'Indent file' })
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
