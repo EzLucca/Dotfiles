@@ -66,7 +66,7 @@ bind '"\t": menu-complete' # cycle with tab for options
 bind 'set show-all-if-ambiguous on'
 bind 'set show-all-if-unmodified on'
 
-export PATH="$HOME/nvim:$PATH" 
+export PATH="$HOME/nvim/bin/:$PATH" 
 export PATH="$HOME/.local/bin:$PATH"
 
 export PATH=$HOME/local/node-v20.11.1-linux-x64/bin:$PATH

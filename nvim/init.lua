@@ -3,15 +3,9 @@
 require("vim-options")
 require("keymaps")
 
--- Plugins home
--- require("plugins")
--- require('vim._core.ui2').enable({})
--- require("config-lsp")
-
--- Plugins 42
-require("config-lazy")
-require("config2-lsp")
-
+require("plugins")
+require('vim._core.ui2').enable({})
+require("config-lsp")
 -- Personalized
 require("functions")
 require("searchg")
