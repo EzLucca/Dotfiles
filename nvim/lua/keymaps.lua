@@ -8,7 +8,7 @@ vim.keymap.set("n", "<leader>fe", vim.cmd.Ex, { desc = 'File explorer' })
 vim.keymap.set("n", "<leader>fs", vim.cmd.w, { desc = 'File Save' })
 vim.keymap.set("n", "<leader>fq", vim.cmd.q, { desc = 'File Quit' })
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Esc insert mode" })
-vim.keymap.set("n", "<F5>", ":make re <CR>", { desc = "Esc insert mode" })
+vim.keymap.set("n", "<F5>", ":cd .. | make re <CR>", { desc = "Esc insert mode" })
 
 -- File search
 vim.keymap.set("n", "<leader>ff", ":find ", { desc = 'File find' })
