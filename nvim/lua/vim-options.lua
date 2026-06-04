@@ -15,6 +15,7 @@ vim.opt.softtabstop = 4                            -- Soft tab stop
 vim.opt.expandtab = true                           -- Use spaces instead of tabs
 vim.opt.smartindent = true                         -- Smart auto-indenting
 vim.opt.autoindent = true                          -- Copy indent from current line
+vim.opt.cindent = true
 
 -- Search settings
 vim.opt.ignorecase = true                          -- Case insensitive search
