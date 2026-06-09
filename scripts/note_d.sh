@@ -14,17 +14,6 @@ if [[ ! -f "$FILEPATH" ]]; then
 cat > "$FILEPATH" <<EOF
 # Notes – $DATE_HUMAN
 
-## Focus
-- 
-
-## Tasks
-- [ ] 
-
-## Notes
-- 
-
-## References
-- 
 EOF
 fi
 
