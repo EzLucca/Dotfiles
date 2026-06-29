@@ -74,3 +74,4 @@ export PATH=$HOME/local/node-v20.11.1-linux-x64/bin:$PATH
 cs() {
 	curl cheat.sh/"$1" | less -R
 }
+export PATH="$HOME/homebrew/bin:$PATH"
