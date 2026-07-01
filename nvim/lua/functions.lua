@@ -125,3 +125,24 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
 		vim.opt_local.cursorline = false
 	end,
 })
+
+vim.keymap.set("n", "<leader>dg", function()
+  local file = vim.fn.expand("%:p")
+  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+
+  if vim.v.shell_error ~= 0 then
+    vim.notify("Not in a Git repository", vim.log.levels.ERROR)
+    return
+  end
+
+  local rel = file:sub(#git_root + 2)
+
+  vim.cmd("tabnew")
+  vim.cmd("read !git show HEAD:" .. vim.fn.shellescape(rel))
+  vim.cmd("1delete")
+  vim.cmd("setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile")
+  vim.cmd("diffthis")
+  vim.cmd("vsplit #")
+  vim.cmd("wincmd l")
+  vim.cmd("diffthis")
+end, { desc = "Diff current file against HEAD" })
