@@ -2,7 +2,7 @@
 
 ### --- Terminal check ---
 if command -v wezterm >/dev/null; then
-	program1="wezterm"
+	program1=(wezterm start -- tmux new-session -A -s main)
 elif command -v xterm >/dev/null; then
 	program1="xterm -geometry 80x9999+0+0 -e bash"
 elif command -v gnome-terminal >/dev/null; then
