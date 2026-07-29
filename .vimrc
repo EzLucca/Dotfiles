@@ -66,8 +66,8 @@ nnoremap <leader><leader> /
 nnoremap <leader>fs :w<CR>
 nnoremap <leader>fq :q<CR>
 
-nnoremap <leader>wv :vsplit <CR>
-nnoremap <leader>ws :split <CR>
+nnoremap <leader>sv :vsplit <CR>
+nnoremap <leader>sh :split <CR>
 nnoremap <leader>wl <c-w><c-l>
 nnoremap <leader>wk <c-w><c-k>
 nnoremap <leader>wj <c-w><c-j>
@@ -86,8 +86,6 @@ nnoremap <leader>cw :%s/\<<C-r><C-w>\>//gI<Left><Left><Lefth
 vnoremap <leader>c :s/^/\/\/ /<CR>
 vnoremap <leader>u :s/^\/\/\s\?//<CR>
 
-packadd termdebug
-nnoremap <leader>gdb :Termdebug ./a.out<CR>
 nnoremap <leader>ov :vert term <CR>
 nnoremap <leader>os :term <CR>
 nnoremap <leader>ob :!xterm -fa 'Monospace' -fs 10 -e bash &<CR>
