@@ -24,6 +24,14 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.enable("lua_ls")
+
+-- C++
+vim.lsp.config("clangd", {
+    cmd = { "clangd" },
+})
+
+vim.lsp.enable("clangd")
+
 -- LspAttach keymaps
 vim.api.nvim_create_autocmd(
     "LspAttach",
