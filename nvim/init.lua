@@ -12,4 +12,6 @@ require("searchg")
 require("terminal")
 require("personal")
 require("notes")
-vim.cmd.colorscheme("retrobox")
+-- vim.cmd.colorscheme("retrobox")
+
+require("mytheme").colorscheme()
