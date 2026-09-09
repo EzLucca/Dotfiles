@@ -56,10 +56,10 @@ vim.api.nvim_create_autocmd(
             vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts("Format buffer"))
 
             vim.keymap.set("n", "<leader>d", function()
-                vim.diagnostic.open_float({
-                    border = "rounded",
-                })
-            end, opts("Show diagnostics float"))
+                vim.diagnostic.setqflist({ bufnr = 0 })
+                vim.cmd("copen")
+            end, opts("Show diagnostics in quickfix"))
+
         end,
     }
 )
