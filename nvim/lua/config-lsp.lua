@@ -32,6 +32,34 @@ vim.lsp.config("clangd", {
 
 vim.lsp.enable("clangd")
 
+
+-- Go
+vim.lsp.config("gopls", {
+    cmd = { "gopls" },
+})
+
+vim.lsp.enable("gopls")
+
+-- TypeScript / JavaScript / React
+vim.lsp.config("vtsls", {
+    cmd = { "vtsls", "--stdio" },
+
+    filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+    },
+
+    root_markers = {
+        "package.json",
+        "tsconfig.json",
+        "jsconfig.json",
+        ".git",
+    },
+})
+
+vim.lsp.enable("vtsls")
 -- LspAttach keymaps
 vim.api.nvim_create_autocmd(
     "LspAttach",

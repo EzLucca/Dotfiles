@@ -73,6 +73,7 @@ nnoremap <leader>wk <c-w><c-k>
 nnoremap <leader>wj <c-w><c-j>
 nnoremap <leader>wh <c-w><c-h>
 nnoremap <leader>wq <c-w><c-q>
+nnoremap <leader>tn :tabnew<CR>
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
