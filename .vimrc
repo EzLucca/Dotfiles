@@ -29,6 +29,7 @@ set showmatch                   " shows matching part of bracket pairs (), [], {
 set tabstop=4
 set shiftwidth=4
 set smartindent
+set expandtab
 
 " ================================================= C Programming Autocomplete =
 set complete=.,w,b,u,t,i
@@ -81,7 +82,7 @@ vnoremap K :m '<-2<CR>gv=gv
 nnoremap <leader>of :e **/*
 nnoremap <leader>om :topleft vert term man 
 
-nnoremap <leader>ff :find *
+nnoremap <leader>ff :find 
 
 nnoremap <leader>cw :%s/\<<C-r><C-w>\>//gI<Left><Left><Lefth
 vnoremap <leader>c :s/^/\/\/ /<CR>
