@@ -1,0 +1,25 @@
+[env]
+TERM = "alacritty"
+
+[window]
+padding = { x = 0, y = 0 }
+dynamic_padding = false
+opacity = 1
+
+[font]
+size = 7.0
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.italic]
+family = "JetBrains Mono"
+style = "Italic"
+
+[cursor]
+style = { shape = "Block", blinking = "On" }

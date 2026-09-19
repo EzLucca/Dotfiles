@@ -50,8 +50,8 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-# bindsym $mod+Return exec alacritty 
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec alacritty 
+# bindsym $mod+Return exec xterm
 # bindsym $mod+Return exec wezterm
 
 #open browser
@@ -225,11 +225,12 @@ hide_edge_borders both
 #
 # # Decrease Brightness
 # bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-exec --no-startup-id xrandr --output HDMI-1 --auto --right-of eDP-1
-exec --no-startup-id udiskie --tray
-
-bindsym $mod+m exec arandr
 
 # Brightness keys
 bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+exec --no-startup-id ~/.local/bin/display-hotplug
+exec --no-startup-id udiskie --tray
+
+bindsym $mod+m exec arandr
