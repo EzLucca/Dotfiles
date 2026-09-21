@@ -1,25 +1,28 @@
 [env]
 TERM = "alacritty"
 
+[terminal]
+shell = { program = "/bin/bash", args = ["-l"] }
+
 [window]
 padding = { x = 0, y = 0 }
 dynamic_padding = false
 opacity = 1
+decorations = "None"
+startup_mode = "Maximized"
 
 [font]
 size = 7.0
 
-[font.normal]
-family = "JetBrains Mono"
-style = "Regular"
-
-[font.bold]
-family = "JetBrains Mono"
-style = "Bold"
-
-[font.italic]
-family = "JetBrains Mono"
-style = "Italic"
-
 [cursor]
 style = { shape = "Block", blinking = "On" }
+
+[colors.primary]
+background = "#1e1e1e"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[mouse]
+hide_when_typing = true
