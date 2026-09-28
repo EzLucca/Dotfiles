@@ -96,6 +96,8 @@ export LESS_TERMCAP_ZV=$(tput rsubm)
 export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 export MANPAGER='less'
-export PATH="$HOME/.local/bin:$PATH"
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi
+
 export PATH="$HOME/.cargo/bin:$PATH"
