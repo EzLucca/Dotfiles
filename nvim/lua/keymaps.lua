@@ -68,6 +68,25 @@ vim.keymap.set("n", "<leader>om", ":Man ", { desc = 'Open Manual' })
 vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { desc = 'New tab' })
 vim.keymap.set('n', '<leader>tx', ':tabclose<CR>', { desc = 'Close tab' })
 
+-- wrappers
+-- vim.keymap.set("n", "<leader>w(", 'ciw(<C-r>")', { desc = "Wrap in ()" })
+-- vim.keymap.set("n", "<leader>w[", 'ciw[<C-r>"]', { desc = "Wrap in []" })
+-- vim.keymap.set("n", "<leader>w{", 'ciw{<C-r>"}', { desc = "Wrap in {}" })
+-- vim.keymap.set("n", "<leader>w'", "ciw'<C-r>\"'", { desc = "Wrap in ''" })
+-- vim.keymap.set("n", '<leader>w"', 'ciw"<C-r>""', { desc = 'Wrap in ""' })
+
+local function wrap(left, right)
+  local text = vim.fn.expand("<cword>")
+  vim.cmd("normal! ciw")
+  vim.api.nvim_put({ left .. text .. right }, "c", true, true)
+end
+
+vim.keymap.set("n", "<leader>w(", function() wrap("(", ")") end, { desc = "Wrap in ()" })
+vim.keymap.set("n", "<leader>w{", function() wrap("{", "}") end, { desc = "Wrap in {}" })
+vim.keymap.set("n", "<leader>w[", function() wrap("[", "]") end, { desc = "Wrap in []" })
+vim.keymap.set("n", "<leader>w'", function() wrap("'", "'") end, { desc = "Wrap in ''" })
+vim.keymap.set("n", '<leader>w"', function() wrap('"', '"') end, { desc = 'Wrap in ""' })
+
 -- undo tree
 vim.keymap.set('n', '<leader>u', function()
     vim.cmd.packadd("nvim.undotree")
