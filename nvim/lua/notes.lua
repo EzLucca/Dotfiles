@@ -68,6 +68,6 @@ end, { silent = true })
 vim.api.nvim_set_keymap(
   "n", -- normal mode
   "<leader>ps", -- key combination
-  ":lua vim.fn.jobstart('python3 -m http.server 8000', {detach = true})<CR>",
+  ":lua vim.fn.jobstart('python3 -m http.server 8000 --directory ~/Documents/MySetup/Notes', {detach = true})<CR>",
   { noremap = true, silent = true }
 )
